@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>home</title>
+	<meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="commons/css/bootstrap.css" />
+	<link rel="stylesheet" href="commons/css/style.css" />
+	<link href="commons/css/home.css" rel="stylesheet">
+	<script src="commons/js/jquery-1.js"></script>
+	<script src="commons/js/jquery_002.js"></script>
+	<script src="commons/js/jquery.js"></script>
+	<script>
+		$(function() {
+			$(".main_image img").each(function () {
+				var ww = $(".main_image").width();
+				var w = $(this).width();
+				var ml = Math.round((parseInt(ww) - parseInt(w)) / 2);
+				$(this).css({ marginLeft: ml + "px" })
+			});
+			
+			$(".main_visual").hover(function() {
+				$("#btn_prev,#btn_next").fadeIn()
+			}, function() {
+				$("#btn_prev,#btn_next").fadeOut()
+			});
+
+			$dragBln = false;
+
+			$(".main_image").touchSlider({
+				flexible : true,
+				speed : 200,
+				btn_prev : $("#btn_prev"),
+				btn_next : $("#btn_next"),
+				paging : $(".flicking_con a"),
+				counter : function(e) {
+					$(".flicking_con a").removeClass("on").eq(
+							e.current - 1).addClass("on");
+				}
+			});
+
+			$(".main_image").bind("mousedown", function() {
+				$dragBln = false;
+			});
+
+			$(".main_image").bind("dragstart", function() {
+				$dragBln = true;
+			});
+
+			$(".main_image a").click(function() {
+				if ($dragBln) {
+					return false;
+				}
+			});
+
+			timer = setInterval(function() {
+				$("#btn_next").click();
+			}, 5000);
+
+			$(".main_visual").hover(function() {
+				clearInterval(timer);
+			}, function() {
+				timer = setInterval(function() {
+					$("#btn_next").click();
+				}, 5000);
+			});
+
+			$(".main_image").bind("touchstart", function() {
+				clearInterval(timer);
+			}).bind("touchend", function() {
+				timer = setInterval(function() {
+					$("#btn_next").click();
+				}, 5000);
+			});
+		});
+	</script>
+</head>
+<body>
+	<header class="m_header sticky_head" id="J_header"
+		style="width: 100%; top: 0px; margin-top: 0px; position: fixed;">
+		<div class="m_header_bar J_header-bar">
+			<div class="mhb_left">
+				<div class="logo"></div>
+				<a class="city" id="city" href="javascript:;">哈尔滨</a>
+			</div>
+			<div class="mhb_center">
+				<div class="search_holder J_hs-holder">
+					<i class="glyphicon glyphicon-search"></i> <input class="in_ppt" />
+				</div>
+			</div>
+			<div class="mhb_right">
+				<a class="account" href="me.html"><i
+					class="glyphicon glyphicon-user"></i></a>
+				<div class="navi J_header-navi-trigger">导航</div>
+			</div>
+		</div>
+	</header>
+	<div class="top-sections">
+		<!-- 轮播 -->
+		<div class="main_visual">
+			<div class="flicking_con">
+				<a th:each="item,stat : ${banners}"
+					th:if="${item.name != 'user.dir'}"
+					th:class="${stat.count == 1 ? 'on' : ''}" href="#@"
+					th:text="${stat.count}">1</a>
+			</div>
+			<div class="main_image">
+				<ul>
+					<li th:each="item,stat : ${banners}"
+						th:if="${item.name != 'user.dir'}"><img
+						th:src="'/soft/upload/banner/' + ${item.name}"></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- 分类 -->
+		<section class="i-category-entry">
+			<table class="list-style-3 marginb_0">
+				<tbody>
+					<tr>
+						<td class="hasImg">
+							<a href="list.html">
+								<span class="word">短途出游</span>
+							</a>
+						</td>
+						<td class="hasImg">
+							<a href="list.html">
+								<span class="word">长途出游</span>
+							</a>
+						</td>
+						<td class="hasImg">
+							<a href="list.html">
+								<span class="word">出国旅游</span>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="hasImg">
+							<a href="aircraft.html">
+								<span class="word">机票</span>
+							</a>
+						</td>
+						<td class="hasImg">
+							<a href="hotel.html">
+								<span class="word">酒店</span>
+							</a>
+						</td>
+						<td class="hasImg">
+							<a href="visa.html">
+								<span class="word">签证</span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="list-style-3 margint_0">
+				<tbody>
+					<tr>
+						<td class="hasImg">
+							<a href="train.html">
+								<span class="word">火车票</span>
+							</a>
+						</td>
+						<td class="hasImg">
+							<a href="automobile.html">
+								<span class="word">直通车</span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+
+	<!-- 推荐 -->
+	<section class="i-floor J_product_rec i-products">
+		<ul class="list-block J_product-list">
+			<li class="i-m-product-item">
+				<a href="detailed.html">
+					<div class="item-top">
+						<div class="product-image">
+							<img src="commons/img/1.jpg" />
+							<div class="image-gra"></div>
+						</div>
+						<div class="sati-peo">
+							<div class="peo">新品上线</div>
+						</div>
+						<div class="product-extra">
+							<span class="icon icon-tours"></span> <span>短途出游</span>
+						</div>
+						<div class="product-price price-schema-1">
+							<div class="product-price-now noPro">
+								￥ <em>1200</em>
+							</div>
+						</div>
+					</div>
+					<div class="item-bottom">
+						<h5 class="product-title">帽儿山位于阿什河上游，距离哈尔滨市84公里，距尚志市尚志镇45公里。</h5>
+						<p class="product-describe">2人起接独立发班，无购物，天天发团</p>
+					</div>
+				</a>
+			</li>
+			<li class="i-m-product-item">
+				<a href="detailed.html">
+					<div class="item-top">
+						<div class="product-image">
+							<img src="commons/img/2.jpg" />
+							<div class="image-gra"></div>
+						</div>
+						<div class="sati-peo">
+							<div class="peo">新品上线</div>
+						</div>
+						<div class="product-extra">
+							<span class="icon icon-tours"></span> <span>长途游</span>
+						</div>
+						<div class="product-price price-schema-1">
+							<div class="product-price-now noPro">
+								￥ <em>2200</em>
+							</div>
+						</div>
+					</div>
+					<div class="item-bottom">
+						<h5 class="product-title">黑龙江凤凰山国家森林公园AAAA级景区，是一个环境优美的森林公园</h5>
+						<p class="product-describe">2人起接独立发班，无购物，天天发团</p>
+					</div>
+				</a>
+			</li>
+			<li class="i-m-product-item">
+				<a href="detailed.html">
+					<div class="item-top">
+						<div class="product-image">
+							<img src="commons/img/3.jpg" />
+							<div class="image-gra"></div>
+						</div>
+						<div class="sati-peo">
+							<div class="peo">新品上线</div>
+						</div>
+						<div class="product-extra">
+							<span class="icon icon-tours"></span> <span>短途出游</span>
+						</div>
+						<div class="product-price price-schema-1">
+							<div class="product-price-now noPro">
+								￥ <em>2200</em>
+							</div>
+						</div>
+					</div>
+					<div class="item-bottom">
+						<h5 class="product-title">大顶子山位于黑龙江省东南部穆棱市境内，属老爷岭山脉北延山峦</h5>
+						<p class="product-describe">2人起接独立发班，无购物，天天发团</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<section class="i-slogan">
+		<div class="slogan-text">
+			<span>让旅游更简单</span>
+		</div>
+	</section>
+	<footer id="footerID" style="padding-bottom: 10px;">
+		<div class="footer-container">
+			<ul class="footer-image-section">
+				<li>
+					<a href="javascript:;">
+						<div>
+							<img src="commons/img/Cii9EFd2EnyIbZL3AAAGJflP3TcAABgSwP_-cMAAAY9010.png" />
+						</div>
+						<p>我的订单</p>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<div>
+							<img src="commons/img/Cii9EFd2EnyIRGXJAAAG7hicC8gAAGXrgP_-PUAAAcL346.png" />
+						</div>
+						<p>回到首页</p>
+					</a>
+				</li>
+			</ul>
+
+			<div class="footer-user-info">
+				<a href="longin.html">登录</a>
+				<p class="sp">|</p>
+				<a href="sign.html">注册</a>
+			</div>
+			<div class="footer-icp">哈尔滨有限公司 | 哈尔滨有限公司</div>
+		</div>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soft.web.dao.user.UserMapper">
+	
+	<select id="queryUser" resultType="java.util.Map">
+		select
+			t.user_id,
+			t.user_name,
+			t.password,
+			t.real_name,
+			t.mobile,
+			t.group_id,
+			g.group_name,
+			t.status
+		from
+			sys_user t
+		join
+			sys_group g
+		on
+			t.group_id = g.group_id
+		where
+			t.user_name = #{user_name}
+	</select>
+</mapper>
