@@ -12,4 +12,15 @@ import com.soft.web.dao.user.*;
 public class IndexService {
 	
 	private static Logger logger = Logger.getLogger(IndexService.class);
+	
+	@Autowired
+	private UserMapper mapper;
+	
+	public List<Map<String, Object>> queryUser(String user_name, String mobile) {
+		return mapper.queryUser(user_name, mobile);
+	}
+	
+	public int save(String user_name, String password, String real_name, String mobile, Integer invite_id) {
+		return mapper.save(user_name, password, real_name, mobile, invite_id);
+	}
 }

@@ -1,49 +1,82 @@
 <!DOCTYPE html>
-<html>
- <head> 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-  <title></title> 
-  <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <link rel="stylesheet" href="css/bootstrap.css" /> 
-  <link rel="stylesheet" href="css/style.css" />  
- </head> 
- <body style="background-color: #fff"> 
-     <div class="page-wrap" id="index">
-    <div id="index1" class="step1 page">
-        <header class="border-bottom">
-            <a href="home.html">
-                <div class="close-btn historyBack">
-                  <i class="glyphicon glyphicon-menu-left"></i>
-                </div>
-            </a>
-            <h1>注册</h1>
-
-            <div class="form">
-				<!-- 用户名 -->
-				<div class="form-group username">
-                    <input type="text" name="userName" id="userName" class="border-bottom" placeholder="请输入用户名">
-                </div>
-                <!-- 手机号码 -->
-                <div class="form-group username">
-                    <input type="tel" name="tel" id="tel" class="border-bottom" placeholder="请输入手机号">
-                </div>
-                <div class="form-group username">
-                    <input type="password" name="pass" id="pass" class="border-bottom" placeholder="请输入密码">
-                </div>
-				<div class="form-group username">
-                    <input type="password" name="surePass" id="surePass" class="border-bottom" placeholder="确认密码">
-                </div>
-                 <!-- 注册邀请码 -->
-                 <div class="form-group username">
-                    <input type="text" name="invitationCode" id="invitationCode" class="border-bottom" placeholder="邀请码">
-                </div>
-                <a href="javascript:" class="submit-btn disabled">
-                    注册
-                </a>
-            </div>
-            </header>
-    </div>
-  
-</div>
- </body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="commons/css/bootstrap.css" />
+	<link rel="stylesheet" href="commons/css/style.css" />
+	<script src="commons/js/jquery-1.js"></script>
+	<script type="text/javascript">
+		var commit = function(){
+			if($("#user_name").val() == ""){
+				alert("用户名不能为空");
+				return;
+			}
+			if($("#mobile").val() == ""){
+				alert("手机号不能为空");
+				return;
+			}
+			if(!/^[1][0-9]{10}$/.test($("#mobile").val())){
+				alert("手机号格式不正确");
+				return;
+			}
+			if($("#pass").val() == ""){
+				alert("密码不能为空");
+				return;
+			}
+			if($("#pass").val() != $("#surePass").val()){
+				alert("两次密码输入不一致");
+				return;
+			}
+			$("form").submit();
+		}
+	</script>
+</head>
+<body style="background-color: #fff">
+	<form action="register.html" method="post">
+		<div class="page-wrap" id="index">
+			<div id="index1" class="step1 page">
+				<header class="border-bottom">
+					<a href="/">
+						<div class="close-btn historyBack">
+							<i class="glyphicon glyphicon-menu-left"></i>
+						</div>
+					</a>
+					<h1>注册</h1>
+					<div class="form">
+						<!-- 用户名 -->
+						<div class="form-group username">
+							<input type="text" name="user_name" id="user_name"
+								class="border-bottom" placeholder="请输入用户名" required />
+						</div>
+						<!-- 手机号码 -->
+						<div class="form-group username">
+							<input type="tel" name="mobile" id="mobile" class="border-bottom"
+								placeholder="请输入手机号" required />
+						</div>
+						<div class="form-group username">
+							<input type="password" name="password" id="pass" class="border-bottom"
+								placeholder="请输入密码" required />
+						</div>
+						<div class="form-group username">
+							<input type="password" name="surePass" id="surePass"
+								class="border-bottom" required placeholder="确认密码" />
+						</div>
+						<!-- 注册邀请码 -->
+						<div class="form-group username">
+							<input type="text" name="invite_id" id="invite_id"
+								class="border-bottom" placeholder="邀请码" />
+						</div>
+						<!-- 注册邀请码 -->
+						<div style="text-align: center;">
+							<span style="color:red" th:text="${message}"></span>
+						</div>
+						<a href="javascript:commit();" class="submit-btn disabled">注册 </a>
+					</div>
+				</header>
+			</div>
+		</div>
+	</form>
+</body>
 </html>

@@ -1,5 +1,6 @@
 package com.soft.util;
 
+import java.math.*;
 import java.security.*;
 
 /**
@@ -47,7 +48,37 @@ public class Text {
 		}
 		return sb.toString();
 	}
+	
+	private static char[] pwdArray = { 'f', 'b', 'd', 'x', 'z', 'n', 'y', 'w', 'u', 'v' };
+	
+	public static String encode(int id) {
+		String ids = String.valueOf(id);
+		String result = "";
+		for (int c : ids.toCharArray())
+			result += (char) (c * 2 + 1);
 
+		int i = 0;
+		while (result.length() < 6) {
+			if (i % 2 == 0) {
+				result += pwdArray[(id % pwdArray.length + i++) % pwdArray.length];
+			} else {
+				result = pwdArray[(id % pwdArray.length + i++) % pwdArray.length] + result;
+			}
+		}
+		return result.toUpperCase();
+	}
+	
+	public static int decode(String text){
+		text = text.toLowerCase();
+		String result = "";
+		for (char c : pwdArray) 
+			text = text.replace(String.valueOf(c), "");
+		for (int c : text.toCharArray()) 
+			result += (char)((c - 1) / 2);
+		
+		return Integer.valueOf(result);
+	}
+	
 	private static final char[] HEX_DIGITS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
 	/**

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"   
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.soft.web.dao.user.UserMapper">
 	
@@ -11,16 +11,18 @@
 			t.password,
 			t.real_name,
 			t.mobile,
-			t.group_id,
-			g.group_name,
+			t.invite_id,
 			t.status
 		from
 			sys_user t
-		join
-			sys_group g
-		on
-			t.group_id = g.group_id
 		where
 			t.user_name = #{user_name}
+		<if test="mobile != null and mobile != ''">
+			or t.mobile = #{mobile}
+		</if>
 	</select>
+	<insert id="save">
+		insert into sys_user(user_name, password, real_name, mobile, invite_id, status)
+		values(#{user_name}, #{password}, #{real_name}, #{mobile}, #{invite_id}, 2)
+	</insert>
 </mapper>
