@@ -22,7 +22,7 @@
 		</if>
 	</select>
 	<insert id="save">
-		insert into sys_user(user_name, password, real_name, mobile, invite_id, status)
-		values(#{user_name}, #{password}, #{real_name}, #{mobile}, #{invite_id}, 2)
+		insert into sys_user(user_name, password, real_name, mobile, invite_id, status, create_date)
+		values(#{user_name}, #{password}, #{real_name}, #{mobile}, #{invite_id}, 2, current_timestamp)
 	</insert>
 </mapper>
