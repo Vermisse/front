@@ -44,16 +44,21 @@ public class IndexController {
 		return "home"; //已登录
 	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() {
+		return "login";
+	}
+	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register() {
 		return "sign";
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String register(String user_name, String password, String mobile, Integer invite_id, Model model) {
+	public String register(String user_name, String password, String mobile, String invite_id, Model model) {
 		String real_name = "用户";
 		
-		List<Map<String, Object>> list = service.queryUser(user_name, mobile);
+		List<Map<String, Object>> list = service.checkUser(user_name, mobile);
 		if(list.size() == 2){
 			model.addAttribute("message", "用户名和手机号均已存在");
 			return "sign";

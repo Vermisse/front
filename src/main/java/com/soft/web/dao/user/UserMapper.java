@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 
 public interface UserMapper {
 
-	public List<Map<String, Object>> queryUser(@Param("user_name") String user_name, @Param("mobile") String mobile);
+	public List<Map<String, Object>> queryUser(@Param("user_id") String user_id, @Param("user_name") String user_name, @Param("mobile") String mobile);
 	
 	public int save(@Param("user_name") String user_name,
 			@Param("password") String password,

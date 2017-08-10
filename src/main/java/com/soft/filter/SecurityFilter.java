@@ -33,8 +33,8 @@ public class SecurityFilter extends HandlerInterceptorAdapter {
 		
 		//如果已经是登录状态拦截登录操作
 		if (url.equals("/login.html")) {
-			response.sendRedirect(request.getContextPath() + "/index.html");
-			return super.preHandle(request, response, handler);
+//			response.sendRedirect(request.getContextPath() + "/index.html");
+//			return super.preHandle(request, response, handler);
 		}
 		
 		request.setAttribute("auth", auth);
