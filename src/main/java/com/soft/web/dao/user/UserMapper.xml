@@ -18,10 +18,10 @@
 		where
 			1=1
 		<if test="user_id != null">
-			t.user_id = #{user_id}
+			and t.user_id = #{user_id}
 		</if>
 		<if test="user_name != null and user_name != ''">
-			t.user_name = #{user_name}
+			and t.user_name = #{user_name}
 		</if>
 		<if test="mobile != null and mobile != ''">
 			or t.mobile = #{mobile}
