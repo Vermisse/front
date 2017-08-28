@@ -15,6 +15,7 @@ import com.soft.util.CookieUtil;
 import com.soft.util.DateUtil;
 import com.soft.web.dao.model.InsertModel;
 import com.soft.web.service.AutomobileService;
+import com.soft.web.service.IndexService;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -32,6 +33,8 @@ public class AutomobileController {
 	
 	@Autowired 
 	private AutomobileService automobileService;
+	@Autowired 
+	private IndexService indexService;
 	
 	@RequestMapping("addAutomobile")
 	public String automobile() {
@@ -48,10 +51,23 @@ public class AutomobileController {
 	 */
 	@RequestMapping("add")
 	@ResponseBody
-	public String addAutomobile(String userName, String userTel, String peopleNum, String address, String startAddress, String endAddress, String date1, String date2, String jsonArray) {
+	public String addAutomobile(String userName, String userTel, String peopleNum, 
+			String address, String startAddress, String endAddress, String date1, 
+			String date2, String jsonArray, HttpServletRequest request) {
 		// 获取登陆者的用户名+手机号码
 //		String userName = "";
 //		String userTel = "";
+		
+
+		if(userName == null || "".equals(userName) || 
+				userTel == null || "".equals(userTel)) {
+			List<Map<String, Object>> list = indexService.queryUser(CookieUtil.getCookie(request));
+			if(list.size() > 0) {
+				userName = (String)list.get(0).get("real_name");
+				userTel = (String)list.get(0).get("mobile");
+			}
+		}
+		
 		String createTime = DateUtil.getNow(format);
 		String updateTime = DateUtil.getNow(format);
 		InsertModel insertModel = new InsertModel();

@@ -15,6 +15,7 @@ import com.soft.util.CookieUtil;
 import com.soft.util.DateUtil;
 import com.soft.web.dao.model.InsertModel;
 import com.soft.web.service.HotelService;
+import com.soft.web.service.IndexService;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -32,6 +33,8 @@ public class HotelController {
 	
 	@Autowired 
 	private HotelService hotelService;
+	@Autowired 
+	private IndexService indexService;
 	
 	@RequestMapping("addHotel")
 	public String hotel() {
@@ -48,10 +51,19 @@ public class HotelController {
 	 */
 	@RequestMapping("add")
 	@ResponseBody
-	public String addHotel(String userName, String userTel, String peopleNum, String address, String date1, String date2, String jsonArray) {
+	public String addHotel(String userName, String userTel, String peopleNum,
+			String address, String date1, String date2, String jsonArray, HttpServletRequest request) {
 		// 获取登陆者的用户名+手机号码
 //		String userName = "";
 //		String userTel = "";
+		if(userName == null || "".equals(userName) || 
+				userTel == null || "".equals(userTel)) {
+			List<Map<String, Object>> list = indexService.queryUser(CookieUtil.getCookie(request));
+			if(list.size() > 0) {
+				userName = (String)list.get(0).get("real_name");
+				userTel = (String)list.get(0).get("mobile");
+			}
+		}
 		String createTime = DateUtil.getNow(format);
 		String updateTime = DateUtil.getNow(format);
 		InsertModel insertModel = new InsertModel();

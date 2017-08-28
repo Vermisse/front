@@ -29,6 +29,15 @@ public class IndexService {
 		return mapper.queryUser(invite_id, null, null, null).size() > 0;
 	}
 	
+	/**
+	 * 于志强
+	 * @param id
+	 * @return
+	 */
+	public List<Map<String, Object>> queryUser(String id) {
+		return mapper.queryUser(id, null, null, null);
+	}
+	
 	public int save(String user_name, String password, String real_name, String mobile, String invite_id) {
 		Integer invite = Text.decode(invite_id);
 		if(invite != null){
