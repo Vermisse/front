@@ -17,18 +17,22 @@ public class IndexService {
 	@Autowired
 	private UserMapper mapper;
 	
-	public List<Map<String, Object>> checkUser(String user_name, String mobile) {
-		return mapper.queryUser(null, user_name, mobile);
+	public List<Map<String, Object>> checkUser(String user_name, String mobile, String password) {
+		return mapper.queryUser(null, user_name, mobile, password);
+	}
+	
+	public List<Map<String, Object>> queryUserByLogin(String mobile, String password) {
+		return mapper.queryUserByLogin(mobile, password);
 	}
 	
 	public boolean checkInvite(String invite_id) {
-		return mapper.queryUser(invite_id, null, null).size() > 0;
+		return mapper.queryUser(invite_id, null, null, null).size() > 0;
 	}
 	
 	public int save(String user_name, String password, String real_name, String mobile, String invite_id) {
 		Integer invite = Text.decode(invite_id);
 		if(invite != null){
-			if(mapper.queryUser(invite_id, null, null).size() == 0){
+			if(mapper.queryUser(invite_id, null, null, null).size() == 0){
 				invite = null;
 			}
 		}

@@ -24,14 +24,63 @@
 							placeholder="请输入手机号">
 					</div>
 					<div class="form-group username">
-						<input type="password" name="tel" id="tel" class="border-bottom"
+						<input type="password" name="pass" id="pass" class="border-bottom"
 							placeholder="请输入密码">
 					</div>
 					<!-- 注册邀请码 -->
-					<a href="javascript:" class="submit-btn disabled"> 登录 </a>
+					<a href="javascript:" class="submit-btn disabled" onclick="sub(this)">登录 </a>
 				</div>
 			</header>
 		</div>
 	</div>
+	<script type="text/javascript" src="commons/js/jquery-1.js"></script>
+	<script type="text/javascript" src="commons/js/cookie.js"></script>
+	<script type="text/javascript" src="commons/js/base64.js"></script>
+	<script>
+		function sub(obj) {
+	  		$(obj).attr("disabled", true); 
+			var tel = $('#tel').val();
+			var pass = $('#pass').val();
+// 			alert(tel);
+			if(tel == null || tel == "") {
+				alert("手机号不可以为空");
+				return;
+			}
+			if(pass == null || pass == "") {
+				alert("密码不可以为空");
+				return;
+			}
+			var json = {"mobile":tel, "password":pass};
+			send(json, obj);
+		}
+		
+		// ajax请求后台
+	  	function send(json, obj) {
+	  		$.ajax({
+			    url:"login.html",    //请求的url地址
+			    dataType:"json",   //返回格式为json
+			    data: json,    //参数值
+			    type:"post",   //请求方式
+			    success:function(data){
+			        //请求成功时处理
+			        if(data.code == 0) {
+			        	alert("用戶名或手機號錯誤");
+			        } else {
+			        	var b = new Base64();
+			        	delCookie('id');
+			        	// 添加cookie
+			        	setCookie('id', b.encode(data.code.toString()), 30); // 一個月有效期
+			        	alert(getCookie('id'));
+			        }
+			  		$(obj).attr("disabled", false); 
+			    },
+			    error:function(XMLHttpRequest, textStatus, errorThrown) {
+			        //请求出错处理
+					alert("添加失败");
+			  		$(obj).attr("disabled", false); 
+			    }
+			});
+	  	}
+	</script>
 </body>
 </html>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 
+import com.soft.util.Black;
 import com.soft.util.Text;
 import com.soft.web.service.*;
 
@@ -58,7 +59,7 @@ public class IndexController {
 	public String register(String user_name, String password, String mobile, String invite_id, Model model) {
 		String real_name = "用户";
 		
-		List<Map<String, Object>> list = service.checkUser(user_name, mobile);
+		List<Map<String, Object>> list = service.checkUser(user_name, mobile, null);
 		if(list.size() == 2){
 			model.addAttribute("message", "用户名和手机号均已存在");
 			return "sign";
@@ -76,4 +77,17 @@ public class IndexController {
 		model.addAttribute("invite_id", Text.encode(id));
 		return "redirect:register.html";
 	}
+	
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@ResponseBody
+	public String login(String password, String mobile, Model model) {
+		List<Map<String, Object>> list = service.queryUserByLogin(mobile, Black.passwd(password));
+		if(list.size() <= 0){
+			return "{\"code\":\"0\"}";
+		}
+		System.out.println(list.get(0).get("user_id"));
+		return "{\"code\":" + list.get(0).get("user_id") + "}";
+	}
+	
 }

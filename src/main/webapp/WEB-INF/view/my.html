@@ -4,25 +4,11 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <title>私人定制</title> 
   <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <link rel="stylesheet" href="css/bootstrap.css" /> 
-  <link rel="stylesheet" href="css/style.css" />  
-  <link rel="stylesheet" href="css/train.css" /> 
+  <link rel="stylesheet" href="../commons/css/bootstrap.css" /> 
+  <link rel="stylesheet" href="../commons/css/style.css" />  
+  <link rel="stylesheet" href="../commons/css/train.css" /> 
      <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" ></script>
      
-<script>
-$(document).ready(function(){
-  $("#btn2").click(function(){
-    $("#t_re").append("<li id='touristContent'><div><div class='adult-div'><div class='tab-content adult' ><div class='del' id='del'><i class='glyphicon glyphicon-minus'></i></div><div class='content'><div class='row adultNameput'><span class='xi_xi'>成人票</span><span><input placeholder='乘客姓名 type=text class=name adult-put name=name value=></span></div><div class=row adultNameput><span class=xi_xi>身份证</span><span><input placeholder=身份证号 type=text class=name adult-put name=name value=></span></div></div></div></div></div></li>");
-  });
-});
-</script>
-     <script type="text/javascript">
-$(document).ready(function(){
-  $("#del").click(function(){
-    $("#touristContent").remove();
-  });
-});
-</script>   
  </head> 
  <body> 
 
@@ -49,37 +35,39 @@ $(document).ready(function(){
     <div class="departdate-wrap">
         <div class="departText">姓名</div>
         <div class="date1">
-            <span class="mad"><input placeholder="请输入" type="text" class="name adult-put" name="name" value="">
-
+            <span class="mad"><input placeholder="请输入" type="text" class="name adult-put" name="name" id="userName" value="">
         </div>
     </div>
     <div class="departdate-wrap">
         <div class="departText">联系方式</div>
         <div class="date1">
-            <span class="mad"><input placeholder="请输入" type="text" class="name adult-put" name="name" value="">
-
+            <span class="mad"><input placeholder="请输入" type="text" class="name adult-put" name="name" id="userTel" value="">
         </div>
     </div>
     <div class="departdate-wrap">
         <div class="departText">出行方式</div>
         <div class="date1">
-            <span class="mad"><input placeholder="请输入" type="text" class="name adult-put" name="name" value="">
-
+            <span class="mad"><input placeholder="请输入" type="text" class="name adult-put" name="name" id="tripMode" value="">
         </div>
     </div>    
+	<div class="departdate-wrap">
+        <div class="departText">人数</div>
+        <div class="date1">
+            <span class="mad"><input placeholder="请输入" type="text" class="name adult-put" name="name" id="peopleNum" value="">
+        </div>
+    </div>
 
-
-    <div class="btn"><a href="javascript:void(0);" class="search-btn">提交</a></div>
+    <div class="btn"><a href="javascript:void(0);" class="search-btn" onclick="sub(this)">提交</a></div>
 
     
    
     <div class="footer">
         <div class="service_num">
-            <span><img src="img/phone.png" alt="" class="serv_phone"></span>
+            <span><img src="../commons/img/phone.png" alt="" class="serv_phone"></span>
             <a href="tel:13456789" id="tel">客服电话</a>
         </div>
         <div class="my_order">
-            <span><img src="img/order_img.png" alt="" class="serv_order"></span>
+            <span><img src="../commons/img/order_img.png" alt="" class="serv_order"></span>
             <span class="my_orderd">我的订单</span>
         </div>
     </div>
@@ -97,11 +85,11 @@ $(document).ready(function(){
     <ul class="footer-image-section">
      <li><a href="javascript:;" >
        <div>
-        <img src="img/Cii9EFd2EnyIbZL3AAAGJflP3TcAABgSwP_-cMAAAY9010.png" />
+        <img src="../commons/img/Cii9EFd2EnyIbZL3AAAGJflP3TcAABgSwP_-cMAAAY9010.png" />
        </div><p>我的订单</p></a></li>
      <li><a href="javascript:;" >
        <div>
-        <img src="img/Cii9EFd2EnyIRGXJAAAG7hicC8gAAGXrgP_-PUAAAcL346.png" />
+        <img src="../commons/img/Cii9EFd2EnyIRGXJAAAG7hicC8gAAGXrgP_-PUAAAcL346.png" />
        </div><p>回到首页</p></a></li>
     </ul>
     
@@ -115,6 +103,36 @@ $(document).ready(function(){
     </div>
    </div>
   </footer>   
-     
+     <script>
+     	function sub(obj) {
+     		var userName =$('#userName').val();
+     		var userTel =$('#userTel').val();
+     		var tripMode =$('#tripMode').val();
+     		var peopleNum =$('#peopleNum').val();
+     		
+     		var json = {"userName":userName, "userTel":userTel, "tripMode":tripMode, "peopleNum":peopleNum};
+     		send(json, obj);
+     	}
+     	
+    	// ajax请求后台
+	  	function send(json, obj) {
+	  		$.ajax({
+			    url:"add.html",    //请求的url地址
+			    dataType:"json",   //返回格式为json
+			    data: json,    //参数值
+			    type:"post",   //请求方式
+			    success:function(data){
+			        //请求成功时处理
+			        alert("添加成功");
+			  		$(obj).attr("disabled", false); 
+			    },
+			    error:function(XMLHttpRequest, textStatus, errorThrown) {
+			        //请求出错处理
+					alert("添加失败");
+			  		$(obj).attr("disabled", false); 
+			    }
+			});
+	  	}
+     </script>
  </body>
 </html>

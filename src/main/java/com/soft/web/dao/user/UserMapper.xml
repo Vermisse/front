@@ -26,6 +26,24 @@
 		<if test="mobile != null and mobile != ''">
 			or t.mobile = #{mobile}
 		</if>
+		<if test="password != null and password != ''">
+			or t.password = #{password}
+		</if>
+	</select>
+	
+	
+	<select id="queryUserByLogin" resultType="java.util.Map">
+		select
+			t.user_id,
+			t.user_name,
+			t.password,
+			t.real_name,
+			t.mobile,
+			t.invite_id,
+			t.status
+		from
+			sys_user t
+		where  t.mobile = #{mobile}  and t.password = #{password}
 	</select>
 	<insert id="save">
 		insert into sys_user(user_name, password, real_name, mobile, invite_id, status, create_date)
