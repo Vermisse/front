@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <head>
+  <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="../commons/css/bootstrap.css" /> 
+  <link rel="stylesheet" href="../commons/css/style.css" />  
+  <link rel="stylesheet" href="../commons/css/oder.css" />  
+    </head>
+    <body>
+        
+        <div class="wrapper no_padding">
+            <div>
+    <header>
+        <span class="header-back">
+            <i class="glyphicon glyphicon-chevron-left">
+            </i>
+        </span>
+        <p>
+            我的火车票
+        </p>
+    </header>
+    <div class="content">
+       
+        <section>
+            <div th:each="item,stat : ${list}" id="410068706" class="order-item">
+                <section class="item-header">
+                    <span class="productName">
+                        <i class="glyphicon glyphicon-flag color_green"></i>
+                        <span>
+                            火车票
+                        </span>
+                    </span>
+                    <span class="orderId" th:text="${item.id}">
+                        410068706
+                    </span>
+                    <span class="statue cancel color_green" th:text="${item.state == 0} ? '初始值' : (${item.state == 1} ? '未沟通' : (${item.state == 2} ? '已沟通' : (${item.state == 3} ? '签证失败' : '签证成功')))">
+                       预定成功
+                    </span>
+                </section>
+                <section class="item-body">
+                    <div class="body-left">
+                        <div>
+                            <p class="item-title">
+                                <span>
+                                    <span th:text="${item.departurePlace}">哈尔滨</span><img src="../commons/img/cityIcon.png" width=" 35px"><span th:text="${item.destination}">哈尔滨</span>
+                                </span>
+                            </p>
+                            <p class="item-subTitle">
+                                <span th:text="${item.createTime}">1</span>&nbsp;&nbsp;&nbsp;<span th:text="${item.peopleNum}">1</span>人
+                            </p>
+                        </div>
+                    </div>
+                    <div class="body-right">
+                    </div>
+                </section>
+                <section class="item-footer">
+                    <ul>
+                        <li>
+                            <span data="410068706" class="btn del-btn">
+                                删除
+                            </span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+        
+    </div>
+    
+</div>
+
+        </div>
+    </body>
+</html>

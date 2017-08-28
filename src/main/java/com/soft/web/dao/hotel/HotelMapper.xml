@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"   
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soft.web.dao.hotel.HotelMapper">
+	<!-- 添加酒店订单  -->
+	<insert id="addHotel" parameterType="com.soft.web.dao.model.InsertModel" useGeneratedKeys="true" keyProperty="id">
+		insert into tb_hotel_order(userName, userTel, address, checkStartTime, checkEndTime, peopleNum, createTime, updateTime, state)
+		values(#{userName}, #{userTel}, #{address}, #{date1}, #{date2}, #{peopleNum}, #{createTime}, #{updateTime}, 0)
+	</insert>
+	
+	<!-- 添加酒店订单詳情  -->
+	<insert id="addHotelDetail">
+		insert into tb_hotel_order_detail(o_id, checkName, cardId, type, createTime, updateTime, state)
+		values(#{o_id}, #{checkName}, #{cardId}, #{type}, #{createTime}, #{updateTime}, 0)
+	</insert>
+	
+	<!-- 根据用戶ID查询酒店订单详情列表 -->
+	<select id="queryHotelList" resultType="java.util.Map">
+		select
+			* 
+		from tb_hotel_order 
+		where 1=1 and state=0 
+		<if test="u_id != null">
+			and u_id=#{u_id} 
+		</if>
+		order by createTime desc
+	</select>
+</mapper>

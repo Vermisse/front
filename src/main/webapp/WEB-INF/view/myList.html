@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <head>
+  <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="../commons/css/bootstrap.css" /> 
+  <link rel="stylesheet" href="../commons/css/style.css" />  
+  <link rel="stylesheet" href="../commons/css/oder.css" />  
+    </head>
+    <body>
+        
+        <div class="wrapper no_padding">
+            <div>
+    <header>
+        <span class="header-back">
+            <i class="glyphicon glyphicon-chevron-left">
+            </i>
+        </span>
+        <p>
+            私人定制列表
+        </p>
+    </header>
+    <div class="content">
+       
+        <section>
+            <div th:each="item,stat : ${list}" class="order-item">
+                <section class="item-header">
+                    <span class="productName">
+                        <i class="glyphicon glyphicon-user color_green"></i>
+                        <span>
+                            私人订制
+                        </span>
+                    </span>
+                    <span class="orderId" th:text="${item.id}">
+                        410068706
+                    </span>
+                    <span class="statue cancel color_green" th:text="${item.state == 0} ? '初始值' : (${item.state == 1} ? '未沟通' : (${item.state == 2} ? '已沟通' : (${item.state == 3} ? '签证失败' : '签证成功')))">
+                        以沟通
+                    </span>
+                </section>
+                <section class="item-body">
+                    <div class="body-left">
+                        <div>
+                            <p class="item-title">
+                                <span>
+                                      <i class="glyphicon glyphicon-map-marker"></i>
+                                      <span th:text="${item.address}">哈尔滨市南岗区</span>
+                                </span>
+                            </p>
+                             
+                            <p class="item-subTitle">
+                              <i class="glyphicon glyphicon-time"></i>  <span th:text="${item.createTime}"></span>&nbsp;&nbsp;<i class="glyphicon glyphicon-user"></i><span th:text="${item.peopleNum}"></span>人
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="body-right">
+                    </div>
+                </section>
+                <section class="item-footer">
+                    <ul>
+                        <li>
+                            <span data="410068706" class="btn del-btn">
+                                删除
+                            </span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            
+        </section>
+        
+    </div>
+    
+</div>
+
+        </div>
+    </body>
+</html>

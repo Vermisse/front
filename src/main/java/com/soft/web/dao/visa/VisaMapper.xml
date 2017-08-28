@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soft.web.dao.visa.VisaMapper">
+	<!-- 添加签证订单  -->
+	<insert id="addVisa" parameterType="com.soft.web.dao.model.InsertModel" useGeneratedKeys="true" keyProperty="id">
+		insert into tb_visa_order(userName, userTel, address, peopleNum, createTime, updateTime, state)
+		values(#{userName,jdbcType=VARCHAR}, #{userTel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+		 #{peopleNum,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, 0)
+	</insert>
+	
+	<!-- 添加签证订单详情  -->
+	<insert id="addVisaDetail">
+		insert into tb_visa_order_detail(v_id, checkName, cardId, createTime, updateTime, state)
+		values(#{v_id}, #{checkName}, #{cardId}, #{createTime}, #{updateTime}, 0)
+	</insert>
+	
+	<!-- 根据状态查询签证订单列表 -->
+	<select id="queryVisaList" resultType="java.util.Map">
+		select 
+			v.*  
+		from tb_visa_order v 
+		where 1=1 
+		<if test="u_id != null">
+			and v.u_id=#{u_id} 
+		</if>
+		order by v.createTime desc
+<!-- 		limit ${page.num},${page.size} -->
+	</select>
+</mapper>
