@@ -5,9 +5,9 @@
 <mapper namespace="com.soft.web.dao.automobile.AutomobileMapper">
 	<!-- 添加飞机票订单  -->
 	<insert id="addAutomobile" parameterType="com.soft.web.dao.model.InsertModel" useGeneratedKeys="true" keyProperty="id">
-		insert into tb_automobile_order(userName, userTel, peopleNum, createTime, updateTime, state, 
+		insert into tb_automobile_order(userName, userTel, u_id, peopleNum, createTime, updateTime, state, 
 		departurePlace, destination, checkStartTime, checkEndTime)
-		values(#{userName, jdbcType=VARCHAR}, #{userTel, jdbcType=VARCHAR}, #{peopleNum, jdbcType=VARCHAR},
+		values(#{userName, jdbcType=VARCHAR}, #{userTel, jdbcType=VARCHAR},#{uId, jdbcType=INTEGER}, #{peopleNum, jdbcType=VARCHAR},
 		 #{createTime, jdbcType=VARCHAR}, #{updateTime, jdbcType=VARCHAR}, 0,
 		#{startAddress, jdbcType=VARCHAR},#{endAddress, jdbcType=VARCHAR},#{date1, jdbcType=VARCHAR},
 		#{date2, jdbcType=VARCHAR})

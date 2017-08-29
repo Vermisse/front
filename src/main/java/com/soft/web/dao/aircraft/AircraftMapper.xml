@@ -7,7 +7,7 @@
 	<insert id="addAircraft" parameterType="com.soft.web.dao.model.InsertModel" useGeneratedKeys="true" keyProperty="id">
 		insert into tb_aircraft_order(userName, u_id, userTel, peopleNum, createTime, updateTime, state, 
 		departurePlace, destination, checkStartTime, checkEndTime)
-		values(#{userName, jdbcType=VARCHAR}, #{uId, jdbcType=INT}, #{userTel, jdbcType=VARCHAR}, #{peopleNum, jdbcType=VARCHAR},
+		values(#{userName, jdbcType=VARCHAR}, #{uId, jdbcType=INTEGER}, #{userTel, jdbcType=VARCHAR}, #{peopleNum, jdbcType=VARCHAR},
 		 #{createTime, jdbcType=VARCHAR}, #{updateTime, jdbcType=VARCHAR}, 0,
 		#{startAddress, jdbcType=VARCHAR},#{endAddress, jdbcType=VARCHAR},#{date1, jdbcType=VARCHAR},
 		#{date2, jdbcType=VARCHAR})
@@ -26,10 +26,9 @@
 		from tb_aircraft_order 
 		where 1=1 
 		<if test="u_id != null">
-			and u_id=#{u_id} 
+			and u_id=#{u_id}  
 		</if>
 		order by createTime desc
-<!-- 		limit ${page.num},${page.size} -->
 	</select>
 	
 </mapper>

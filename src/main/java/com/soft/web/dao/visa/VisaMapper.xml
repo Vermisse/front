@@ -5,8 +5,8 @@
 <mapper namespace="com.soft.web.dao.visa.VisaMapper">
 	<!-- 添加签证订单  -->
 	<insert id="addVisa" parameterType="com.soft.web.dao.model.InsertModel" useGeneratedKeys="true" keyProperty="id">
-		insert into tb_visa_order(userName, userTel, address, peopleNum, createTime, updateTime, state)
-		values(#{userName,jdbcType=VARCHAR}, #{userTel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+		insert into tb_visa_order(userName, userTel, u_id, address, peopleNum, createTime, updateTime, state)
+		values(#{userName,jdbcType=VARCHAR}, #{userTel,jdbcType=VARCHAR},#{uId, jdbcType=INTEGER}, #{address,jdbcType=VARCHAR},
 		 #{peopleNum,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, 0)
 	</insert>
 	

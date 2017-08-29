@@ -5,8 +5,8 @@
 <mapper namespace="com.soft.web.dao.my.MyMapper">
 	<!-- 添加私人订制  -->
 	<insert id="addMy" parameterType="com.soft.web.dao.model.InsertModel" useGeneratedKeys="true" keyProperty="id">
-		insert into tb_my_order(userName, userTel, peopleNum, tripMode, createTime, updateTime, state)
-		values(#{userName}, #{userTel}, #{peopleNum}, #{tripMode}, #{createTime}, #{updateTime}, 0)
+		insert into tb_my_order(userName, userTel, u_id, peopleNum, tripMode, createTime, updateTime, state)
+		values(#{userName}, #{userTel},#{uId, jdbcType=INTEGER}, #{peopleNum}, #{tripMode}, #{createTime}, #{updateTime}, 0)
 	</insert>
 	
 	
