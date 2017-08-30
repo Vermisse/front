@@ -16,12 +16,4 @@ public class BannerService {
 	public List<Map<String, Object>> queryBanner() {
 		return mapper.queryBanner();
 	}
-	
-	public void save(String filepath, String url) {
-		mapper.save(filepath, url);
-	}
-	
-	public void delete(Integer id) {
-		mapper.delete(id);
-	}
 }

@@ -11,6 +11,7 @@ import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.soft.util.Black;
+import com.soft.util.Page;
 import com.soft.util.Text;
 import com.soft.web.service.*;
 
@@ -22,7 +23,7 @@ import com.soft.web.service.*;
 @Controller
 public class IndexController {
 	
-	private final String banner = "/upload/banner";
+	private final String banner = "/upload/file";
 	
 	/**
 	 * 登录Service
@@ -30,18 +31,26 @@ public class IndexController {
 	@Autowired
 	private IndexService service;
 	
+	@Autowired
+	private BannerService bannerService;
+	
+	@Autowired
+	private ProductService productService;
+	
 	/**
 	 * 进入首页
 	 * @param request
 	 * @return
 	 */
 	@RequestMapping("/index")
-	public String index(HttpSession session, Model model) {
-		String path = session.getServletContext().getRealPath("/");
-		File file = new File(path + "/../soft" + banner);
-		File[] banners = file.listFiles();
-		
+	public String index(Model model) {
+		// 轮播
+		List banners = bannerService.queryBanner();
 		model.addAttribute("banners", banners);
+
+		// 产品列表
+		List products = productService.queryProduct(null, new Page());
+		model.addAttribute("products", products);
 		return "home"; //已登录
 	}
 	

@@ -27,28 +27,4 @@ public class ProductController {
 		model.addAttribute("page", page);
 		return "manage/product";
 	}
-
-	@RequestMapping(value = "add", method = RequestMethod.GET)
-	public String add() {
-		return "manage/productAdd";
-	}
-
-	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public String add(String product_name,
-			Double product_price,
-			String description,
-			String feature,
-			String price_description,
-			String stroke,
-			String notice,
-			String filepath) {
-		service.save(product_name, product_price, description, feature, price_description, stroke, notice, filepath);
-		return "redirect:/product/list.html";
-	}
-	
-	@RequestMapping("update")
-	public String update(int product_id) {
-		service.update(product_id);
-		return "redirect:/product/list.html";
-	}
 }

@@ -11,10 +11,10 @@
 	<script src="commons/js/jquery_002.js"></script>
 	<script src="commons/js/jquery.js"></script>
 	<script>
-	$.getScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js',function(){ 
-		alert(JSON.stringify(remote_ip_info));
-	  	alert(remote_ip_info.province);//省份   
-	});  
+		$.getScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js',function(){ 
+			alert(JSON.stringify(remote_ip_info));
+		  	alert(remote_ip_info.province);//省份   
+		});
 	</script>
 	<script>
 		$(function() {
@@ -40,8 +40,7 @@
 				btn_next : $("#btn_next"),
 				paging : $(".flicking_con a"),
 				counter : function(e) {
-					$(".flicking_con a").removeClass("on").eq(
-							e.current - 1).addClass("on");
+					$(".flicking_con a").removeClass("on").eq(e.current - 1).addClass("on");
 				}
 			});
 
@@ -106,15 +105,14 @@
 		<div class="main_visual">
 			<div class="flicking_con">
 				<a th:each="item,stat : ${banners}"
-					th:if="${item.name != 'user.dir'}"
 					th:class="${stat.count == 1 ? 'on' : ''}" href="#@"
 					th:text="${stat.count}">1</a>
 			</div>
 			<div class="main_image">
 				<ul>
-					<li th:each="item,stat : ${banners}"
-						th:if="${item.name != 'user.dir'}"><img
-						th:src="'/soft/upload/banner/' + ${item.name}"></li>
+					<li th:each="item,stat : ${banners}">
+						<img th:src="'/soft/upload/file/' + ${item.filepath}">
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -181,78 +179,29 @@
 	<!-- 推荐 -->
 	<section class="i-floor J_product_rec i-products">
 		<ul class="list-block J_product-list">
-			<li class="i-m-product-item">
+			<li class="i-m-product-item" th:each="item : ${products}">
 				<a href="detailed.html">
 					<div class="item-top">
 						<div class="product-image">
-							<img src="commons/img/1.jpg" />
+							<img src="commons/img/1.jpg" th:src="'/soft/upload/file/' + ${item.filepath}" />
 							<div class="image-gra"></div>
 						</div>
 						<div class="sati-peo">
 							<div class="peo">新品上线</div>
 						</div>
 						<div class="product-extra">
-							<span class="icon icon-tours"></span> <span>短途出游</span>
+							<span class="icon icon-tours"></span>
+							<span th:text="${item.type_name}">短途出游</span>
 						</div>
 						<div class="product-price price-schema-1">
 							<div class="product-price-now noPro">
-								￥ <em>1200</em>
+								￥ <em th:text="${item.product_price}">1200</em>
 							</div>
 						</div>
 					</div>
 					<div class="item-bottom">
-						<h5 class="product-title">帽儿山位于阿什河上游，距离哈尔滨市84公里，距尚志市尚志镇45公里。</h5>
-						<p class="product-describe">2人起接独立发班，无购物，天天发团</p>
-					</div>
-				</a>
-			</li>
-			<li class="i-m-product-item">
-				<a href="detailed.html">
-					<div class="item-top">
-						<div class="product-image">
-							<img src="commons/img/2.jpg" />
-							<div class="image-gra"></div>
-						</div>
-						<div class="sati-peo">
-							<div class="peo">新品上线</div>
-						</div>
-						<div class="product-extra">
-							<span class="icon icon-tours"></span> <span>长途游</span>
-						</div>
-						<div class="product-price price-schema-1">
-							<div class="product-price-now noPro">
-								￥ <em>2200</em>
-							</div>
-						</div>
-					</div>
-					<div class="item-bottom">
-						<h5 class="product-title">黑龙江凤凰山国家森林公园AAAA级景区，是一个环境优美的森林公园</h5>
-						<p class="product-describe">2人起接独立发班，无购物，天天发团</p>
-					</div>
-				</a>
-			</li>
-			<li class="i-m-product-item">
-				<a href="detailed.html">
-					<div class="item-top">
-						<div class="product-image">
-							<img src="commons/img/3.jpg" />
-							<div class="image-gra"></div>
-						</div>
-						<div class="sati-peo">
-							<div class="peo">新品上线</div>
-						</div>
-						<div class="product-extra">
-							<span class="icon icon-tours"></span> <span>短途出游</span>
-						</div>
-						<div class="product-price price-schema-1">
-							<div class="product-price-now noPro">
-								￥ <em>2200</em>
-							</div>
-						</div>
-					</div>
-					<div class="item-bottom">
-						<h5 class="product-title">大顶子山位于黑龙江省东南部穆棱市境内，属老爷岭山脉北延山峦</h5>
-						<p class="product-describe">2人起接独立发班，无购物，天天发团</p>
+						<h5 class="product-title" th:text="${item.description}">帽儿山位于阿什河上游，距离哈尔滨市84公里，距尚志市尚志镇45公里。</h5>
+						<p class="product-describe" th:html="${item.feature}">2人起接独立发班，无购物，天天发团</p>
 					</div>
 				</a>
 			</li>

@@ -9,12 +9,4 @@
 		from banner t
 		order by t.id desc
 	</select>
-	<insert id="save">
-		insert into banner(filepath, url)
-		values(#{filepath}, #{url})
-	</insert>
-	<delete id="delete">
-		delete from banner
-		where id = #{id}
-	</delete>
 </mapper>

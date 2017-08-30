@@ -12,14 +12,5 @@ public interface ProductMapper {
 	
 	int queryProductCount(@Param("product_name") String product_name);
 	
-	int save(@Param("product_name") String product_name,
-			@Param("product_price") Double product_price,
-			@Param("description") String description,
-			@Param("feature") String feature,
-			@Param("price_description") String price_description,
-			@Param("stroke") String stroke,
-			@Param("notice") String notice,
-			@Param("filepath") String filepath);
-	
-	void update(@Param("product_id") int product_id);
+	Map<String, Object> queryProductOne(@Param("product_id") Integer product_id);
 }

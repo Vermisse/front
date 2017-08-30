@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soft.web.dao.ticket.TicketMapper">
+	
+	<select id="queryTickets" resultType="java.util.Map">
+		select t.ticket_id,t.ticket_name,t.ticket_price,t.filepath,t.state,t.create_date
+		from tickets t
+		where 1 = 1
+		<if test="ticket_name != null and ticket_name != ''">
+			and t.ticket_name like concat('%',#{ticket_name},'%')
+		</if>
+		order by t.ticket_id desc
+		limit ${page.num},${page.size}
+	</select>
+	<select id="queryTicketsCount" resultType="Integer">
+		select count(*)
+		from tickets t
+		where 1 = 1
+		<if test="ticket_name != null and ticket_name != ''">
+			and t.ticket_name like concat('%',#{ticket_name},'%')
+		</if>
+	</select>
+	<select id="queryTicket" resultType="Map">
+		select t.ticket_id,t.ticket_name,t.ticket_price,t.filepath,t.state,t.create_date
+		from tickets t
+		where t.ticket_id = #{ticket_id}
+	</select>
+</mapper>
