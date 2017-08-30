@@ -11,6 +11,12 @@
 	<script src="commons/js/jquery_002.js"></script>
 	<script src="commons/js/jquery.js"></script>
 	<script>
+	$.getScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js',function(){ 
+		alert(JSON.stringify(remote_ip_info));
+	  	alert(remote_ip_info.province);//省份   
+	});  
+	</script>
+	<script>
 		$(function() {
 			$(".main_image img").each(function () {
 				var ww = $(".main_image").width();
