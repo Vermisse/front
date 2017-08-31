@@ -86,7 +86,7 @@
 		style="width: 100%; top: 0px; margin-top: 0px; position: fixed;">
 		<div class="m_header_bar J_header-bar">
 			<div class="mhb_left">
-				<div class="logo"></div>
+				 <div class="logo"><img th:src="'/soft/upload/file/' + ${config.filepath}" src="img/11.png" width="30" height="30"></div> 
 				<a class="city" id="city" href="javascript:;">哈尔滨</a>
 			</div>
 			<div class="mhb_center">
@@ -219,7 +219,7 @@
 				<p class="sp">|</p>
 				<a href="register.html">注册</a>
 			</div>
-			<div class="footer-icp">哈尔滨有限公司 | 哈尔滨有限公司</div>
+			<div class="footer-icp" th:text="${config.company}">哈尔滨有限公司 | 哈尔滨有限公司</div>
 		</div>
 	</footer>
 </body>
