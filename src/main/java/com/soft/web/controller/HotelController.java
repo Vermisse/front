@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.soft.util.CookieUtil;
 import com.soft.util.DateUtil;
 import com.soft.web.dao.model.InsertModel;
+import com.soft.web.service.ConfigService;
 import com.soft.web.service.HotelService;
 import com.soft.web.service.IndexService;
 
@@ -35,9 +36,12 @@ public class HotelController {
 	private HotelService hotelService;
 	@Autowired 
 	private IndexService indexService;
+	@Autowired
+	private ConfigService configService;
 	
 	@RequestMapping("addHotel")
-	public String hotel() {
+	public String hotel(Model model) {
+		model.addAttribute("config", configService.queryConfig());
 		return "/hotel";
 	}
 		
@@ -94,9 +98,13 @@ public class HotelController {
 	@RequestMapping("list")
 	public String list(Model model, HttpServletRequest request) {
 		String id = CookieUtil.getCookie(request);
+		if("".equals(id)) {
+			return "login";
+		}
 		List<Map> list = hotelService.queryHotelList(id);
 		
 		model.addAttribute("list", list);
+		model.addAttribute("config", configService.queryConfig());
 		return "/hotelList";
 	}
 

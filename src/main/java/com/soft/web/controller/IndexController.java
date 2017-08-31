@@ -11,6 +11,7 @@ import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.soft.util.Black;
+import com.soft.util.CookieUtil;
 import com.soft.util.Page;
 import com.soft.util.Text;
 import com.soft.web.service.*;
@@ -36,20 +37,25 @@ public class IndexController {
 	
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private ConfigService configService;
+	
 	
 	/**
 	 * 进入首页
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("/index")
+	@RequestMapping("/home")
 	public String index(Model model) {
+		
+		model.addAttribute("config", configService.queryConfig());
 		// 轮播
 		List banners = bannerService.queryBanner();
 		model.addAttribute("banners", banners);
 
 		// 产品列表
-		List products = productService.queryProduct(null, new Page());
+		List products = productService.queryProduct(null, new Page(), null, "1");
 		model.addAttribute("products", products);
 		return "home"; //已登录
 	}
@@ -60,7 +66,8 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String register() {
+	public String register(Model model) {
+		model.addAttribute("config", configService.queryConfig());
 		return "sign";
 	}
 	
@@ -97,6 +104,25 @@ public class IndexController {
 		}
 		System.out.println(list.get(0).get("user_id"));
 		return "{\"code\":" + list.get(0).get("user_id") + "}";
+	}
+	
+	/**
+	 * 我的订单
+	 * @return
+	 */
+	@RequestMapping(value = "/me", method = RequestMethod.GET)
+	public String me(HttpServletRequest request, Model model) {
+		String id = CookieUtil.getCookie(request);
+		if(!"".equals(id)) {
+			List<Map<String, Object>> list = service.queryUser(id);
+			if(list.size() > 0) {
+				model.addAttribute("userName", (String)list.get(0).get("real_name"));
+			}
+		} else {
+			model.addAttribute("userName", "1");
+		}
+		model.addAttribute("config", configService.queryConfig());
+		return "me";
 	}
 	
 }

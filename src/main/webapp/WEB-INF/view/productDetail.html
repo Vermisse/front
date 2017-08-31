@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <title></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+ <link rel="stylesheet" href="../commons/css/bootstrap.css" /> 
+  <link rel="stylesheet" href="../commons/css/detailed.css" /> 
+       <link href="../commons/css/home.css" rel="stylesheet">
+       <script src="../commons/js/jquery-1.js"></script>
+  <script src="../commons/js/jquery_002.js"></script>
+  <script src="../commons/js/jquery.js"></script>
+    <script src="../commons/js/com .js"></script>
+    <script>
+          $(document).ready(function () {
+
+        $(".main_visual").hover(function () {
+            $("#btn_prev,#btn_next").fadeIn()
+        }, function () {
+            $("#btn_prev,#btn_next").fadeOut()
+        });
+
+        $dragBln = false;
+
+        $(".main_image").touchSlider({
+            flexible: true,
+            speed: 200,
+            btn_prev: $("#btn_prev"),
+            btn_next: $("#btn_next"),
+            paging: $(".flicking_con a"),
+            counter: function (e) {
+                $(".flicking_con a").removeClass("on").eq(e.current - 1).addClass("on");
+            }
+        });
+
+        $(".main_image").bind("mousedown", function () {
+            $dragBln = false;
+        });
+
+        $(".main_image").bind("dragstart", function () {
+            $dragBln = true;
+        });
+
+        $(".main_image a").click(function () {
+            if ($dragBln) {
+                return false;
+            }
+        });
+
+        timer = setInterval(function () {
+            $("#btn_next").click();
+        }, 5000);
+
+        $(".main_visual").hover(function () {
+            clearInterval(timer);
+        }, function () {
+            timer = setInterval(function () {
+                $("#btn_next").click();
+            }, 5000);
+        });
+
+        $(".main_image").bind("touchstart", function () {
+            clearInterval(timer);
+        }).bind("touchend", function () {
+            timer = setInterval(function () {
+                $("#btn_next").click();
+            }, 5000);
+        });
+
+    });
+
+    </script>
+ </head> 
+ <body>  
+  <header class="m_header   " id="J_header"> 
+   <div class="m_header_bar J_header-bar"> 
+    <div class="mhb_left"> 
+     <a class="go_to_home" href="home.html"><i class="glyphicon glyphicon-home"></i></a> 
+    </div> 
+    <div class="mhb_center mhb_center_across"> 
+     <h2 class="title">产品详情</h2> 
+    </div> 
+    <div class="mhb_right"> 
+     <a class="account" href=""><i class="glyphicon glyphicon-user"></i></a> 
+     <div class="navi J_header-navi-trigger">
+      导航
+     </div> 
+    </div>
+   </div> 
+  </header> 
+  <div class="index"> 
+   <div class="product-detail" id="productDetail">
+    <div class="topic_image" style="height:151px;"> 
+     <div  class="banner-container"> 
+      <div class="main_visual zero">
+  <div class="flicking_con">
+  </div>
+  <div class="main_image">
+    <ul>
+      <li> <img src="../commons/img/1.jpg" th:src="'/soft/upload/file/' + ${map.filepath}" width="100%"></li>
+    </ul>
+  </div>
+<script>
+$(".main_image img").each(function () {
+	var ww = $(".main_image").width();
+	var w = $(this).width();
+	var ml = Math.round((parseInt(ww) - parseInt(w)) / 2);
+	$(this).css({ marginLeft: ml + "px" })
+})
+</script> 
+</div> 
+     </div> 
+     <a href="Javascript:history.go(-1);void(0);" class="back glyphicon glyphicon-menu-left"></a> 
+     <div class="product-info-bg add-agency"> 
+<!--       <p class="product_info">跟团游 &middot; 风景国旅</p>  -->
+      <p class="product_info_right"> 产品编号：<span th:text="${map.product_id}">210150333 </span></p> 
+     </div> 
+    </div> 
+    <div class="basic_info"> 
+     <div class="base "> 
+      <div class="title" th:text="${map.product_name}">
+       &lt;帽儿山1日游&gt;登山 直通车 往返交通 景区大门票 
+      </div> 
+      <div id="priceInfo" class="priceInfo"> 
+       <div class="price ordinary"> 
+        <span class="promoCommon"> &nbsp;&nbsp;￥<strong th:text="${map.product_price}">75</strong></span> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="transport"> 
+     <div class="depart-city" id="departure_Choose" data-href="/h5/tours/210150333/City/1102/1102"> 
+      <span class="J_departCity">出发地：哈尔滨</span> 
+     </div> 
+    </div> 
+    <div class="contents">  
+     <div id="receptionAgency" class="reception-agency"> 
+      <div class="agency-name"> 
+       <p class="agency">产品品牌<i>&middot;</i><!-- <span>哈尔滨</span> --></p> 
+      </div> 
+      <div class="agency-description" th:text="${map.description}">
+      
+      </div> 
+     </div> 
+     <div id="journeyInfo" class="journeyInfo"> 
+      <div class="journey-nav"> 
+       <div class="bar single"id="nav" style="top: 0px; background:#fff; z-index: 9999;"> 
+        <ul  id="nky"> 
+              <li class="xselect"><a href="#J_jDay1">行程</a></li> 
+         <li class=""><a href="#cpts">产品特色</a></li> 
+         <li class=""><a href="#fysm">费用说明</a></li> 
+         <li class=""><a href="#proRecommend">预订须知</a></li> 
+        </ul> 
+       </div> 
+      </div> 
+      <div class="journey-content-nobg" id="xcjs"> 
+       <div class="journeys"> 
+        <div class="journeys-main" id="J_journeys" th:utext="${map.stroke}"> 
+         
+        </div> 
+        
+        <div class="J_journeysImgView"> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="summary" id="cpts"> 
+      <div class="box"> 
+       <div class="label">
+        产品特色
+       </div> 
+       <div class="box-list pro-feature"> 
+        <section> 
+         <header class="pm-recom"> 
+          <img src="../commons/img/product-manager.png" alt="产品经理" title="产品经理" /> 
+          <h4>产品经理推荐</h4> 
+         </header> 
+         <ul class="pm-recom-main"> 
+          <li th:utext="${map.feature}"></li> 
+         </ul> 
+        </section> 
+       </div> 
+      </div> 
+     </div> 
+     <div id="fysm" class="costInfo"> 
+      <h4>费用說明</h4> 
+      <dl th:utext="${map.price_description}"> 
+       
+      </dl> 
+     </div> 
+     
+    <div id="fysm11" class="costInfo" style="margin-top: 10px;">
+		<h4>预定须知</h4>
+		<dl th:utext="${map.notice}">
+			
+		</dl>
+	</div>
+	     
+     <div id="product_footer">
+      <div class="product_buttons"> 
+       <a href="tel:123456" th:href="'tel:' + ${config.telephone}"><i class="glyphicon glyphicon-earphone"></i><span>电话客服</span></a>  
+       <a href="tel:" th:href="'tel:' + ${config.telephone}" class="order_product to-order-btn " id="orderButton"><span>购买</span></a> 
+      </div> 
+      <div class="tel-consult"> 
+       <div class="tel-content"> 
+        <p>为了节省您的时间，请告知客服此产品的产品编号</p> 
+        <p class="tel-proid">产品编号：210150333</p> 
+        <a href="tel:" th:href="'tel:' + ${config.telephone}" class="tel-call">拨打客服电话</a> 
+        <a href="javascript:void(0)" class="tel-cancel">取消</a> 
+       </div> 
+      </div>
+     </div> 
+    </div> 
+    
+   
+   </div> 
+  </div> 
+
+       
+     <script type="text/javascript" >  
+    function menuFixed(id){  
+        var obj = document.getElementById(id);  
+        var _getHeight = obj.offsetTop;  
+  
+        window.onscroll = function(){  
+            changePos(id,_getHeight);  
+        }  
+    }  
+    function changePos(id,height){  
+        var obj = document.getElementById(id);  
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;  
+        if(scrollTop < height){  
+            obj.style.position = 'relative';  
+        }else{  
+            obj.style.position = 'fixed';  
+        }  
+    }  
+    window.onload = function(){  
+        menuFixed('nav');  
+    }  
+</script>
+     <script>
+               $(function (){
+    $('#nky li').click(function (){
+        $('.xselect').removeClass('xselect');
+        $(this).addClass("xselect");
+ 
+    });
+})
+</script>
+
+ </body>
+</html>

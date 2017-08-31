@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
  <head> 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <title>订购门票</title> 
   <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <link rel="stylesheet" href="css/bootstrap.css" /> 
-  <link rel="stylesheet" href="css/style.css" />  
-  <link rel="stylesheet" href="css/train.css" /> 
+  <link rel="stylesheet" href="../commons/css/bootstrap.css" /> 
+  <link rel="stylesheet" href="../commons/css/style.css" />  
+  <link rel="stylesheet" href="../commons/css/train.css" /> 
      <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" ></script>
      
 <script>
@@ -73,7 +73,7 @@ $(document).ready(function(){
 
     <div class="tab-bottom1" id="btn2">
         <span class="add-more1">
-             <img class="fr-ex1" src="img/add.png" width="20rem">
+             <img class="fr-ex1" src="../commons/img/add.png" width="20rem">
              添加/修改游玩人
         </span>
     </div>
@@ -92,11 +92,11 @@ $(document).ready(function(){
    
     <div class="footer">
         <div class="service_num">
-            <span><img src="img/phone.png" alt="" class="serv_phone"></span>
+            <span><img src="../commons/img/phone.png" alt="" class="serv_phone"></span>
             <a href="tel:13456789" id="tel">客服电话</a>
         </div>
         <div class="my_order">
-            <span><img src="img/order_img.png" alt="" class="serv_order"></span>
+            <span><img src="../commons/img/order_img.png" alt="" class="serv_order"></span>
             <span class="my_orderd">我的订单</span>
         </div>
     </div>
@@ -114,18 +114,18 @@ $(document).ready(function(){
     <ul class="footer-image-section">
      <li><a href="javascript:;" >
        <div>
-        <img src="img/Cii9EFd2EnyIbZL3AAAGJflP3TcAABgSwP_-cMAAAY9010.png" />
+        <img src="../commons/img/Cii9EFd2EnyIbZL3AAAGJflP3TcAABgSwP_-cMAAAY9010.png" />
        </div><p>我的订单</p></a></li>
      <li><a href="javascript:;" >
        <div>
-        <img src="img/Cii9EFd2EnyIRGXJAAAG7hicC8gAAGXrgP_-PUAAAcL346.png" />
+        <img src="../commons/img/Cii9EFd2EnyIRGXJAAAG7hicC8gAAGXrgP_-PUAAAcL346.png" />
        </div><p>回到首页</p></a></li>
     </ul>
     
     <div class="footer-user-info">
-     <a href="sign.html">登录</a>
+     <a href="/login.html">登录</a>
      <p class="sp">|</p>
-     <a href="longin.html">注册</a>
+     <a href="/register.html">注册</a>
     </div>
     <div class="footer-icp">
       哈尔滨有限公司 | 哈尔滨有限公司

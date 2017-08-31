@@ -14,8 +14,8 @@ public class TicketService {
 	@Autowired
 	private TicketMapper mapper;
 	
-	public List<Map> queryTickets(String ticket_name, Page page) {
-		return mapper.queryTickets(ticket_name, page);
+	public List<Map> queryTickets(String ticket_name, Page page, String state) {
+		return mapper.queryTickets(ticket_name, page, state);
 	}
 	
 	public int queryTicketsCount(String ticket_name) {

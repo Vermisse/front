@@ -4,10 +4,20 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+.color_or{background-color: #FE7443!important;}
+.color_blue{background-color: #47ADFF!important;}
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+}
+ .time_erm li{ display: inline-block;float: left}
+            .date-label1{ line-height: 140px;width: 60px;text-align: center }
+.zero{padding: 0!important;
+      margin: 0!important;
+}
+.fr {
+    float: right!important;
 }
 body {
   margin: 0;

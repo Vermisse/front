@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.soft.util.CookieUtil;
 import com.soft.util.DateUtil;
 import com.soft.web.dao.model.InsertModel;
+import com.soft.web.service.ConfigService;
 import com.soft.web.service.IndexService;
 import com.soft.web.service.TrainService;
 
@@ -35,9 +36,12 @@ public class TrainController {
 	private TrainService trainService;
 	@Autowired 
 	private IndexService indexService;
+	@Autowired
+	private ConfigService configService;
 	
 	@RequestMapping("addTrain")
-	public String train() {
+	public String train(Model model) {
+		model.addAttribute("config", configService.queryConfig());
 		return "/train";
 	}
 		
@@ -99,8 +103,12 @@ public class TrainController {
 	@RequestMapping("list")
 	public String list(Model model, HttpServletRequest request) {
 		String id = CookieUtil.getCookie(request);
+		if("".equals(id)) {
+			return "login";
+		}
 		List<Map> list = trainService.queryTrainList(id);
 		model.addAttribute("list", list);
+		model.addAttribute("config", configService.queryConfig());
 		return "trainList";
 	}
 }

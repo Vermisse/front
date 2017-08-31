@@ -12,6 +12,12 @@
 		<if test="product_name != null and product_name != ''">
 			and t.product_name like concat('%',#{product_name},'%')
 		</if>
+		<if test="id != null and id != ''">
+			and st.id=#{id}
+		</if>
+		<if test="state != null and state != ''">
+			and t.state=#{state} 
+		</if>
 		order by t.create_date desc
 		limit ${page.num},${page.size}
 	</select>

@@ -1,4 +1,4 @@
-html.fullpage-frozen,body.fullpage-frozen {
+.color_redhtml.fullpage-frozen,body.fullpage-frozen {
 	height: 100%;
 	overflow: hidden
 }
@@ -129,6 +129,20 @@ article, aside, footer, header, hgroup, main, nav, section {
     background: #2dbb55;
     color: #fff;
 }
+           .i-category-entry td .category-img {
+            
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.color_red{background-color: #F8951C!important;color: #fff!important}
+fieldset, img {
+    border: 0;
+}
+           
 .m_header {
     position: relative;
     /* height: 50px; */
@@ -140,8 +154,8 @@ article, aside, footer, header, hgroup, main, nav, section {
     text-align: center;
     border: solid 1px #fff;
     overflow: hidden;
-    padding: 10px;
-    background-color: #00c37d;
+    padding: 15px;
+    background-color: #5598DC;
 }
 .m_header_bar .mhb_right .navi {
     float: left;
@@ -192,6 +206,7 @@ table {
 
 .i-category-entry td a {
     width: 100%;
+    font-weight: 900;
     height: 100%;
     top: 50%;
     left: 0;
@@ -201,7 +216,7 @@ table {
     vertical-align: middle;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    background-color: #00c37d;
+    background-color: #5598DC;
 }
 tr {
     display: table-row;

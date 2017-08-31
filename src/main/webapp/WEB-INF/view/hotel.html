@@ -95,7 +95,7 @@
 	    <div class="footer">
 	        <div class="service_num">
 	            <span><img src="../commons/img/phone.png" alt="" class="serv_phone"></span>
-	            <a href="tel:13456789" id="tel">客服电话</a>
+	            <a href="tel:13456789" th:href="'tel:' + ${config.telephone}"  id="tel">客服电话</a>
 	        </div>
 	        <div class="my_order">
 	            <span><img src="../commons/img/order_img.png" alt="" class="serv_order"></span>
@@ -115,7 +115,7 @@
 		<div class="footer-container">
 			<ul class="footer-image-section">
 				<li>
-					<a href="javascript:;">
+					<a href="/me.html">
 						<div>
 							<img src="../commons/img/Cii9EFd2EnyIbZL3AAAGJflP3TcAABgSwP_-cMAAAY9010.png" />
 						</div>
@@ -123,7 +123,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="javascript:;">
+					<a href="/home.html">
 						<div>
 							<img src="../commons/img/Cii9EFd2EnyIRGXJAAAG7hicC8gAAGXrgP_-PUAAAcL346.png" />
 						</div>
@@ -133,9 +133,9 @@
 			</ul>
 	
 			<div class="footer-user-info">
-				<a href="sign.html">登录</a>
+				<a href="login.html">登录</a>
 				<p class="sp">|</p>
-				<a href="longin.html">注册</a>
+				<a href="sign.html">注册</a>
 			</div>
 			<div class="footer-icp">
 				哈尔滨有限公司 | 哈尔滨有限公司

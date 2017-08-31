@@ -8,7 +8,7 @@ import com.soft.util.*;
 
 public interface ProductMapper {
 	
-	List<Map> queryProduct(@Param("product_name") String product_name, @Param("page") Page page);
+	List<Map> queryProduct(@Param("product_name") String product_name, @Param("page") Page page,@Param("id") String id,@Param("state")  String state);
 	
 	int queryProductCount(@Param("product_name") String product_name);
 	

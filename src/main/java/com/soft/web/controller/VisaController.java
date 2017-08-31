@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.soft.util.CookieUtil;
 import com.soft.util.DateUtil;
 import com.soft.web.dao.model.InsertModel;
+import com.soft.web.service.ConfigService;
 import com.soft.web.service.IndexService;
 import com.soft.web.service.VisaService;
 
@@ -35,9 +36,12 @@ public class VisaController {
 	private VisaService visaService;
 	@Autowired 
 	private IndexService indexService;
+	@Autowired
+	private ConfigService configService;
 	
 	@RequestMapping("addVisa")
-	public String visa() {
+	public String visa(Model model) {
+		model.addAttribute("config", configService.queryConfig());
 		return "/visa";
 	}
 		
@@ -92,9 +96,13 @@ public class VisaController {
 	@RequestMapping("list")
 	public String list(Model model, HttpServletRequest request) {
 		String id = CookieUtil.getCookie(request);
+		if("".equals(id)) {
+			return "login";
+		}
 		List<Map> list = visaService.queryVisaList(id);
 		
 		model.addAttribute("list", list);
+		model.addAttribute("config", configService.queryConfig());
 		return "visaList";
 	}
 	

@@ -8,7 +8,8 @@ import com.soft.util.*;
 
 public interface TicketMapper {
 	
-	List<Map> queryTickets(@Param("ticket_name") String ticket_name, @Param("page") Page page);
+	List<Map> queryTickets(@Param("ticket_name") String ticket_name, @Param("page") Page page,
+			@Param("state") String state);
 	
 	int queryTicketsCount(@Param("ticket_name") String ticket_name);
 	

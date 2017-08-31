@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN"   
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soft.web.dao.config.ConfigMapper">
+	
+	<select id="queryConfig" resultType="java.util.Map">
+		select *
+		from sys_config t
+		order by t.id desc 
+		limit 1 
+	</select>
+</mapper>

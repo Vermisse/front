@@ -14,8 +14,8 @@ public class ProductService {
 	@Autowired
 	private ProductMapper mapper;
 	
-	public List<Map> queryProduct(String product_name, Page page) {
-		return mapper.queryProduct(product_name, page);
+	public List<Map> queryProduct(String product_name, Page page, String id, String state) {
+		return mapper.queryProduct(product_name, page, id, state);
 	}
 	
 	public int queryProductCount(String product_name) {

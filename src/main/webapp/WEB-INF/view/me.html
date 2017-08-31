@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
  <head> 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <title>home</title> 
   <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <link rel="stylesheet" href="css/bootstrap.css" /> 
-  <link rel="stylesheet" href="css/style.css" />  
- <link rel="stylesheet" href="css/me.css" />  
+  <link rel="stylesheet" href="../commons/css/bootstrap.css" /> 
+  <link rel="stylesheet" href="../commons/css/style.css" />  
+ <link rel="stylesheet" href="../commons/css/me.css" />  
  </head> 
  <body> 
 
@@ -30,54 +30,21 @@
 
 <div>
     <header id="center-header">
-        <a href="longin.html">
-            <img id="user-logo" src="img/avatar.png">
+        <a href="/home.html">
+            <img id="user-logo" src="../commons/img/avatar.png">
         </a>
-        <span id="nickname">
-            <!---->
-            <a id="login" href="longin.html">
-                登录/注册
-            </a>
-            <!---->
+        
+        <span id="nickname" th:utext="${userName == '1'} ? '<a id=login href=login.html>登录/注册 </a>' : ${userName}">
+            
         </span>
-        <a href="longin.html">
-            <img src="img/Cii_Lllcmo2ISzFqAAAUFDK4JroAACnEQJFY2wAABQs740.png"
+        <a href="/home.html">
+            <img src="../commons/img/Cii_Lllcmo2ISzFqAAAUFDK4JroAACnEQJFY2wAABQs740.png"
             alt="" id="recommend">
         </a>
     </header>
-       <!--
-    <div id="my-order">
-        <div class="my-order-header">
-            <a href="">
-                <h2 class="title" >
-                    我的订单
-                </h2>
-            </a>
-        </div>
-     
-        <div class="my-order-bottom">
-            <div>
-                <a href="">
-                    <img src="img/Cii_LllA_eGITjzNAAAGWpnf_V8AAAAXQP_-WYAAAaa423.png" alt="">
-                </a>
-                <p>
-                    待付款
-                </p>
-            </div>
-            <div>
-                <a href="order.html">
-                    <img src="img/Cii_NllA_eKIS35bAAAHd83JslEAAAN7QP_-HEAAAeP849.png" >
-                </a>
-                <p>
-                    我的门票
-                </p>
-            </div>
-        </div>
-
-        -->
     </div>
 
-    <div id="my-wallet">
+    <!-- <div id="my-wallet">
         <div class="my-wallet-header">
             <a href="">
                 <h2 class="title">
@@ -86,7 +53,6 @@
                 <a href="mayn.html" class="fr">充值</a>
             </a>
         </div>
-        <!---->
     </div>
      <div id="my-wallet">
         <div class="my-wallet-header">
@@ -94,10 +60,9 @@
                 <h2 class="title">
                     我的旅游线路
                 </h2>
-                <img src="img/Cii_JVlCKWiIMyNAAAAG_RNbuYIAAAEHQP_-OoAAAcW655_w640_h0_c0_t0.png">
+                <img src="../commons/img/Cii_JVlCKWiIMyNAAAAG_RNbuYIAAAEHQP_-OoAAAcW655_w640_h0_c0_t0.png">
             </a>
         </div>
-        <!---->
     </div>
     <div id="my-wallet">
         <div class="my-wallet-header">
@@ -105,55 +70,50 @@
                 <h2 class="title">
                     我的门票
                 </h2>
-                <img src="img/Cii_JVlCKWiIMyNAAAAG_RNbuYIAAAEHQP_-OoAAAcW655_w640_h0_c0_t0.png">
+                <img src="../commons/img/Cii_JVlCKWiIMyNAAAAG_RNbuYIAAAEHQP_-OoAAAcW655_w640_h0_c0_t0.png">
             </a>
         </div>
-        <!---->
-    </div>
+    </div> -->
     <div id="my-wallet">
         <div class="my-wallet-header">
-            <a href="me_train.html">
+            <a href="train/list.html">
                 <h2 class="title">
                     我的火车票
                 </h2>
-                <img src="img/Cii_JVlCKWiIMyNAAAAG_RNbuYIAAAEHQP_-OoAAAcW655_w640_h0_c0_t0.png">
+                <img src="../commons/img/Cii_JVlCKWiIMyNAAAAG_RNbuYIAAAEHQP_-OoAAAcW655_w640_h0_c0_t0.png">
             </a>
         </div>
-        <!---->
     </div>
     <div id="my-wallet">
         <div class="my-wallet-header">
-            <a href="aircraft_e.html">
+            <a href="aircraft/list.html">
                 <h2 class="title2">
                     我的机票
                 </h2>
-                <img src="img/Cii_JVlCKWiIMyNAAAAG_RNbuYIAAAEHQP_-OoAAAcW655_w640_h0_c0_t0.png">
+                <img src="../commons/img/Cii_JVlCKWiIMyNAAAAG_RNbuYIAAAEHQP_-OoAAAcW655_w640_h0_c0_t0.png">
             </a>
         </div>
-        <!---->
     </div>
     <div id="my-wallet">
         <div class="my-wallet-header">
-            <a href="visa_e.html">
+            <a href="visa/list.html">
                 <h2 class="title">
                     我的签证
                 </h2>
-                <img src="img/Cii_JVlCKWiIMyNAAAAG_RNbuYIAAAEHQP_-OoAAAcW655_w640_h0_c0_t0.png">
+                <img src="../commons/img/Cii_JVlCKWiIMyNAAAAG_RNbuYIAAAEHQP_-OoAAAcW655_w640_h0_c0_t0.png">
             </a>
         </div>
-        <!---->
     </div>
     
     <div id="my-wallet">
         <div class="my-wallet-header">
-            <a href="my.html">
+            <a href="my/list.html">
                 <h2 class="title">
                     私人定制
                 </h2>
-                <img src="img/Cii_JVlCKWiIMyNAAAAG_RNbuYIAAAEHQP_-OoAAAcW655_w640_h0_c0_t0.png">
+                <img src="../commons/img/Cii_JVlCKWiIMyNAAAAG_RNbuYIAAAEHQP_-OoAAAcW655_w640_h0_c0_t0.png">
             </a>
         </div>
-        <!---->
     </div>
 </div>
 
@@ -169,20 +129,20 @@
   <footer id="footerID" style="padding-bottom:10px;">
    <div class="footer-container">
     <ul class="footer-image-section">
-     <li><a href="javascript:;" >
+     <li><a href="/me.html" >
        <div>
-        <img src="img/Cii9EFd2EnyIbZL3AAAGJflP3TcAABgSwP_-cMAAAY9010.png" />
+        <img src="../commons/img/Cii9EFd2EnyIbZL3AAAGJflP3TcAABgSwP_-cMAAAY9010.png" />
        </div><p>我的订单</p></a></li>
-     <li><a href="javascript:;" >
+     <li><a href="/home.html" >
        <div>
-        <img src="img/Cii9EFd2EnyIRGXJAAAG7hicC8gAAGXrgP_-PUAAAcL346.png" />
+        <img src="../commons/img/Cii9EFd2EnyIRGXJAAAG7hicC8gAAGXrgP_-PUAAAcL346.png" />
        </div><p>回到首页</p></a></li>
     </ul>
     
     <div class="footer-user-info">
-     <a href="sign.html">登录</a>
+     <a href="/login.html">登录</a>
      <p class="sp">|</p>
-     <a href="longin.html">注册</a>
+     <a href="/register.html">注册</a>
     </div>
     <div class="footer-icp">
       哈尔滨有限公司 | 哈尔滨有限公司

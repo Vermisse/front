@@ -11,6 +11,9 @@
 		<if test="ticket_name != null and ticket_name != ''">
 			and t.ticket_name like concat('%',#{ticket_name},'%')
 		</if>
+		<if test="state != null">
+			and  t.state=#{state} 
+		</if>
 		order by t.ticket_id desc
 		limit ${page.num},${page.size}
 	</select>
