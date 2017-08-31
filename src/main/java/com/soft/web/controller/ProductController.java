@@ -21,6 +21,7 @@ public class ProductController {
 	
 	@RequestMapping("list")
 	public String list(String product_name, Page page, Model model, String id) {
+		System.out.println(product_name);
 		List<Map> list = service.queryProduct(product_name, page, id, "1");
 		int count = service.queryProductCount(product_name);
 		page.setCount(count);

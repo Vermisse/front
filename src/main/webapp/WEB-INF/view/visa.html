@@ -7,14 +7,14 @@
 	<link rel="stylesheet" href="../commons/css/bootstrap.css" />
 	<link rel="stylesheet" href="../commons/css/style.css" />
 	<link rel="stylesheet" href="../commons/css/train.css" />
-	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../commons/js/jquery-1.js"></script>
  </head> 
  <body> 
 
      <header class="m_header  sticky_head" id="J_header" style="width:100%;">
             <div class="m_header_bar J_header-bar">
                 <div class="mhb_left">
-                    <a class="go_to_home" href="home.html"><i class="glyphicon glyphicon-home"></i></a>
+                    <a class="go_to_home" href="/home.html"><i class="glyphicon glyphicon-home"></i></a>
                     
                 </div>
                 <div class="mhb_center mhb_center_across">
@@ -108,7 +108,7 @@
        </div><p>回到首页</p></a></li>
     </ul>
     
-    <div class="footer-user-info">
+    <div class="footer-user-info" id="footer">
      <a href="/login.html">登录</a>
      <p class="sp">|</p>
      <a href="/register.html">注册</a>
@@ -117,7 +117,15 @@
       哈尔滨有限公司 | 哈尔滨有限公司
     </div>
    </div>
-  </footer>   
+  </footer> 
+  	 <script type="text/javascript" src="../commons/js/cookie.js"></script>
+	 <script>
+		 $(document).ready(function(){
+	         if(getCookie('id') != null && getCookie('id') != "") {
+	        	$('#footer').hide();
+	         }
+		})
+	 </script> 
     <script>
     	$(document).ready(function(){
 			$("#btn2").click(function(){

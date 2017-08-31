@@ -91,7 +91,7 @@
 			</div>
 			<div class="mhb_center">
 				<div class="search_holder J_hs-holder">
-					<i class="glyphicon glyphicon-search"></i> <input class="in_ppt" />
+					<i class="glyphicon glyphicon-search" onclick="_search()"></i> <input class="in_ppt" id="search" value=""/>
 				</div>
 			</div>
 			<div class="mhb_right">
@@ -128,7 +128,7 @@
        <tbody>
          <tr>
            <td class="hasImg color_red" rowspan="2">
-             <a href="hotel/hotel.html"><span class="word color_red">酒店</span><img class="category-img" src="../commons/img/1499221905_79016.png"></a>
+             <a href="hotel/addHotel.html"><span class="word color_red">酒店</span><img class="category-img" src="../commons/img/1499221905_79016.png"></a>
            </td>
            <td class="hasImg color_red">
             <a href="product/list.html?id=3" > <span class="word color_red">出国旅游</span></a>
@@ -181,7 +181,7 @@
 						</div>
 					</div>
 					<div class="item-bottom">
-						<h5 class="product-title" th:text="${item.description}">帽儿山位于阿什河上游，距离哈尔滨市84公里，距尚志市尚志镇45公里。</h5>
+						<h5 class="product-title" th:text="${item.product_name}">帽儿山位于阿什河上游，距离哈尔滨市84公里，距尚志市尚志镇45公里。</h5>
 						<p class="product-describe" th:utext="${item.feature}">2人起接独立发班，无购物，天天发团</p>
 					</div>
 				</a>
@@ -214,13 +214,26 @@
 				</li>
 			</ul>
 
-			<div class="footer-user-info">
+			<div class="footer-user-info" id="footer">
 				<a href="login.html">登录</a>
 				<p class="sp">|</p>
 				<a href="register.html">注册</a>
 			</div>
 			<div class="footer-icp" th:text="${config.company}">哈尔滨有限公司 | 哈尔滨有限公司</div>
 		</div>
-	</footer>
+	</footer>  
+  	 <script type="text/javascript" src="../commons/js/cookie.js"></script>
+	 <script>
+		 $(document).ready(function(){
+	         if(getCookie('id') != null && getCookie('id') != "") {
+	        	$('#footer').hide();
+	         }
+		})
+	 </script> 
+	<script>
+		function _search(){
+			window.location.href="product/list.html?product_name=" + $('#search').val();
+		} 
+	</script>
 </body>
 </html>
