@@ -24,7 +24,7 @@
      </div> 
     </div>
 			<div class="mhb_right">
-				<a class="account" href="me.html"><i
+				<a class="account" href="/me.html"><i
 					class="glyphicon glyphicon-user"></i></a>
 
 				<div class="navi J_header-navi-trigger">导航</div>
@@ -37,7 +37,7 @@
     
     
     
-     <li class="i-m-product-item"><a href="ticket_le.html">
+     <li class="i-m-product-item"><a  th:href="'tel:' + ${config.telephone}" href="javascript:void(0);">
        <div class="item-top">
         <div class="product-image">
          <img th:src="'/soft/upload/file/' + ${item.filepath}" height="100%">
