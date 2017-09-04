@@ -343,8 +343,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-50%);
 }
 .i-slogan .slogan-text {
-    height: 56px;
-    line-height: 56px;
+
     color: #999;
     text-align: center;
     overflow: hidden;
@@ -374,7 +373,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     width: 90%;
     height: 75px;
-    margin: 20px auto;
+    margin: 0px auto;
     -webkit-box-pack: justify;
     -moz-box-pack: justify;
     -webkit-justify-content: space-between;

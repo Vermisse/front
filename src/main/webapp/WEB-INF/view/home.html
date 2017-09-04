@@ -97,7 +97,7 @@
 			<div class="mhb_right">
 				<a class="account" href="/me.html"><i
 					class="glyphicon glyphicon-user"></i></a>
-				<div class="navi J_header-navi-trigger">导航</div>
+<!-- 				<div class="navi J_header-navi-trigger">导航</div> -->
 			</div>
 		</div>
 	</header>
@@ -105,14 +105,14 @@
 		<!-- 轮播 -->
 		<div class="main_visual">
 			<div class="flicking_con">
-				<a th:each="item,stat : ${banners}"
+				<a th:each="item,stat : ${banners}" 
 					th:class="${stat.count == 1 ? 'on' : ''}" href="#@"
 					th:text="${stat.count}">1</a>
 			</div>
 			<div class="main_image">
 				<ul>
 					<li th:each="item,stat : ${banners}">
-						<img th:src="'/soft/upload/file/' + ${item.filepath}">
+						<a href="https://baidu.com"><img th:src="'/soft/upload/file/' + ${item.filepath}"></a>
 					</li>
 				</ul>
 			</div>
@@ -128,7 +128,9 @@
        <tbody>
          <tr>
            <td class="hasImg color_red" rowspan="2">
-             <a href="hotel/addHotel.html"><span class="word color_red">酒店</span><img class="category-img" src="../commons/img/1499221905_79016.png"></a>
+             <a href="hotel/addHotel.html"><span class="word color_red">私人定制</span>
+       <img class="category-img" src="../commons/img/sirendz.png">
+             </a>
            </td>
            <td class="hasImg color_red">
             <a href="product/list.html?id=3" > <span class="word color_red">出国旅游</span></a>
@@ -145,6 +147,27 @@
           </tr>
                         
                     </tbody></table>
+                    
+        <table class="list-style-2">
+       <tbody>
+         <tr>
+           <td class="hasImg" rowspan="">
+             <a href="hotel/addHotel.html"><span class="word">酒店</span><img class="category-img" src="../commons/img/1499221905_79016.png"></a>
+           </td>
+           <td class="hasImg">
+            <a href="product/list.html?id=3" > <span class="word"><img src="../commons/img/menpiao.png" width="20px" style="padding-right: 10px;">门票</span></a>
+           </td>
+           <td class="hasImg">
+             <a href="product/list.html?id=2"> <span class="word"><img src="../commons/img/shequ.png" width="20px" style="padding-right:5px;">加入社区</span></a>
+            </td>                     
+         </tr>
+                        
+                    </tbody></table>
+        
+        
+        
+                    
+        
      <table class="list-style-3 marginb_0"> 
       <tbody>
        <tr> 
