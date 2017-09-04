@@ -79,6 +79,7 @@ public class HotelController {
 		insertModel.setUserTel(userTel);
 		insertModel.setDate1(date1);
 		insertModel.setDate2(date2);
+		insertModel.setuId(CookieUtil.getCookie(request));
 		hotelService.addHotel(insertModel);
 		int id = insertModel.getId();
 		try {

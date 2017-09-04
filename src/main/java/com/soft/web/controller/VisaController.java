@@ -77,6 +77,7 @@ public class VisaController {
 		insertModel.setUpdateTime(updateTime);
 		insertModel.setUserName(userName);
 		insertModel.setUserTel(userTel);
+		insertModel.setuId(CookieUtil.getCookie(request)); // 用户id
 		visaService.addVisa(insertModel);
 		int id = insertModel.getId();
 		try {

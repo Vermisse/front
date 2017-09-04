@@ -73,6 +73,7 @@ public class MyController {
 		insertModel.setUserName(userName);
 		insertModel.setUserTel(userTel);
 		insertModel.setTripMode(tripMode);
+		insertModel.setuId(CookieUtil.getCookie(request)); // 用户id
 		myService.addMy(insertModel);
 		int id = insertModel.getId();
 		return "{\"id\":" + id + "}";

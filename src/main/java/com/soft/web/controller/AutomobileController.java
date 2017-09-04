@@ -88,6 +88,7 @@ public class AutomobileController {
 		insertModel.setEndAddress(endAddress);
 		insertModel.setDate1(date1);
 		insertModel.setDate2(date2);
+		insertModel.setuId(CookieUtil.getCookie(request)); // 用户id
 		automobileService.addAutomobile(insertModel);
 		int id = insertModel.getId();
 		try {
