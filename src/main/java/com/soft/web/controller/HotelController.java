@@ -103,7 +103,7 @@ public class HotelController {
 	public String list(Model model, HttpServletRequest request) {
 		String id = CookieUtil.getCookie(request);
 		if("".equals(id)) {
-			return "login";
+			return "redirect:/login.html";
 		}
 		List<Map> list = hotelService.queryHotelLists(id);
 		

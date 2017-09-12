@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>home</title>
+	<title>慧游</title>
 	<meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<link rel="stylesheet" href="commons/css/bootstrap.css" />
 	<link rel="stylesheet" href="commons/css/style.css" />
@@ -82,8 +82,7 @@
 	</script>
 </head>
 <body>
-	<header class="m_header sticky_head" id="J_header"
-		style="width: 100%; top: 0px; margin-top: 0px; position: fixed;">
+	<header class="m_header sticky_head" id="J_header" style="width: 100%; top: 0px; margin-top: 0px; position: fixed;">
 		<div class="m_header_bar J_header-bar">
 			<div class="mhb_left">
 				 <div class="logo"><img th:src="'/soft/upload/file/' + ${config.filepath}" src="img/11.png" width="30" height="30"></div> 
@@ -112,74 +111,89 @@
 			<div class="main_image">
 				<ul>
 					<li th:each="item,stat : ${banners}">
-						<a href="https://baidu.com"><img th:src="'/soft/upload/file/' + ${item.filepath}"></a>
+						<a th:href="${item.url}"><img th:src="'/soft/upload/file/' + ${item.filepath}"></a>
 					</li>
 				</ul>
 			</div>
 		</div>
 
 		<!-- 分类 -->
-		<section class="i-category-entry"> 
-     <table class="list-style-3 marginb_0"> 
-      <tbody>    
-      </tbody>
-     </table> 
-     <table class="list-style-2">
-       <tbody>
-         <tr>
-           <td class="hasImg color_red" rowspan="2">
-             <a href="my/addMy.html"><span class="word color_red">私人定制</span>
-       <img class="category-img" src="../commons/img/sirendz.png">
-             </a>
-           </td>
-           <td class="hasImg color_red">
-            <a href="product/list.html?id=3" > <span class="word color_red">出国旅游</span></a>
-           </td>
-           <td class="hasImg color_red">
-             <a href="product/list.html?id=2"> <span class="word color_red">长途出游</span></a>
-            </td>                     
-         </tr>
-         <tr>
-              <td class="hasImg color_red"><a href="product/list.html?id=1"> <span class="word color_red">短途出游</span></a>
-              </td>
-          <td class="hasImg color_red"> <a href="automobile/addAutomobile.html"> <span class="word color_red">直通车</span></a>
-          </td>                      
-          </tr>
-                        
-                    </tbody></table>
-                    
-        <table class="list-style-2">
-       <tbody>
-         <tr>
-           <td class="hasImg" rowspan="">
-             <a href="hotel/addHotel.html"><span class="word">酒店</span><img class="category-img" src="../commons/img/1499221905_79016.png"></a>
-           </td>
-           <td class="hasImg">
-            <a href="ticket/list.html" > <span class="word"><img src="../commons/img/menpiao.png" width="20px" style="padding-right: 10px;">门票</span></a>
-           </td>
-           <td class="hasImg">
-            <a href='javascript:alert("敬请期待")'> <span class="word"><img src="../commons/img/shequ.png" width="20px" style="padding-right:5px;">加入社区</span></a>
-            </td>                     
-         </tr>
-                        
-                    </tbody></table>
-        
-        
-        
-                    
-        
-     <table class="list-style-3 marginb_0"> 
-      <tbody>
-       <tr> 
-        <td class="hasImg"> <a href="aircraft/addAircraft.html"><img src="../commons/img/1499221239_91608.png" width="20px" style="padding-right: 10px;"><span class="word">机票</span> </a> </td> 
-        <td class="hasImg"> <a href="train/addTrain.html"><img src="../commons/img/1493714602_44372.png" width="20px" style="padding-right: 10px;"><span class="word">火车票</span></a> </td> 
-        <td class="hasImg "> <a href="visa/addVisa.html"> <img src="../commons/img/1490347121_64791.png" width="20px" style="padding-right: 10px;"><span class="word">签证</span></a> </td> 
-       </tr> 
-      </tbody>
-     </table>
-    </section>
+		<section class="i-category-entry">
+			<table class="list-style-3 marginb_0">
+				<tbody>
+				</tbody>
+			</table>
+			<table class="list-style-2">
+				<tbody>
+					<tr>
+						<td class="hasImg color_red" rowspan="2"><a
+							href="my/addMy.html"> <span class="word color_red">私人定制</span>
+								<img class="category-img" src="../commons/img/sirendz.png">
+						</a></td>
+						<td class="hasImg color_red"><a href="product/list.html?id=3">
+								<span class="word color_red">出国旅游</span>
+						</a></td>
+						<td class="hasImg color_red"><a href="product/list.html?id=2">
+								<span class="word color_red">长途出游</span>
+						</a></td>
+					</tr>
+					<tr>
+						<td class="hasImg color_red"><a href="product/list.html?id=1">
+								<span class="word color_red">短途出游</span>
+						</a></td>
+						<td class="hasImg color_red"><a
+							href="automobile/addAutomobile.html"> <span
+								class="word color_red">直通车</span>
+						</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="list-style-2">
+				<tbody>
+					<tr>
+						<td class="hasImg" rowspan=""><a href="hotel/addHotel.html">
+								<span class="word">酒店</span> <img class="category-img"
+								src="../commons/img/1499221905_79016.png">
+						</a></td>
+						<td class="hasImg"><a href="ticket/list.html"> <span
+								class="word"> <img src="../commons/img/menpiao.png"
+									width="20px" style="padding-right: 10px;">门票
+							</span>
+						</a></td>
+						<td class="hasImg"><a href='javascript:alert("敬请期待")'> <span
+								class="word"> <img src="../commons/img/shequ.png"
+									width="20px" style="padding-right: 5px;">加入社区
+							</span>
+						</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="list-style-3 marginb_0">
+				<tbody>
+					<tr>
+						<td class="hasImg">
+							<a href="aircraft/addAircraft.html">
+								<img src="../commons/img/1499221239_91608.png" width="20px" style="padding-right: 10px;">
+								<span class="word">机票</span>
+							</a>
+						</td>
+						<td class="hasImg">
+							<a href="train/addTrain.html">
+								<img src="../commons/img/1493714602_44372.png" width="20px" style="padding-right: 10px;">
+								<span class="word">火车票</span>
+							</a>
+						</td>
+						<td class="hasImg ">
+							<a href="visa/addVisa.html">
+								<img src="../commons/img/1490347121_64791.png" width="20px" style="padding-right: 10px;">
+								<span class="word">签证</span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
 	</div>
-
 	<!-- 推荐 -->
 	<section class="i-floor J_product_rec i-products">
 		<ul class="list-block J_product-list">

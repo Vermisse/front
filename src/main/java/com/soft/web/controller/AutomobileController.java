@@ -109,7 +109,7 @@ public class AutomobileController {
 	public String list(Model model, HttpServletRequest request) {
 		String id = CookieUtil.getCookie(request);
 		if("".equals(id)) {
-			return "login";
+			return "redirect:/login.html";
 		}
 		List<Map> list = automobileService.queryAutomobileList(id);
 		

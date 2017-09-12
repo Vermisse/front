@@ -83,7 +83,7 @@ public class MyController {
 	public String list(Model model, HttpServletRequest request) {
 		String id = CookieUtil.getCookie(request);
 		if("".equals(id)) {
-			return "login";
+			return "redirect:/login.html";
 		}
 		List<Map> list = myService.queryMyList(id);
 		
