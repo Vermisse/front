@@ -17,6 +17,8 @@ public class InsertModel {
 	private String tripMode; // 出行方式(私人訂製)
 	private String type;
 	private String uId; // 用戶id
+	private String star; // 酒店星级
+	private String price; // 酒店价格
 
 	public int getId() {
 		return id;
@@ -128,6 +130,22 @@ public class InsertModel {
 
 	public void setuId(String uId) {
 		this.uId = uId;
+	}
+
+	public String getStar() {
+		return star;
+	}
+
+	public void setStar(String star) {
+		this.star = star;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
 	
 }

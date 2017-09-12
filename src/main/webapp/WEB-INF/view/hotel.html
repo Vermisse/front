@@ -55,19 +55,28 @@
 	    </div>
 	    
 	      <div class="departdate-wrap">
-	        <div class="departText"><span class="xi_xi">价格</span> <input placeholder="请填写价格" type="text" class="name adult-put" name="userName" id="userName" value=""></div>
+	        <div class="departText"><span class="xi_xi">价格</span> 
+				 <select id="price" name="periodType"  class="name adult-put">
+    				<option value="0">请选择</option>
+					<option value="0-100元">0-100元</option>
+					<option value="100-200元">100-200元</option>
+					<option value="200-300元">200-300元</option>
+					<option value="300-500元">300-500元</option>
+					<option value="500以上">500以上</option>
+				</select>
+			</div>
 	    </div>
 	      <div class="departdate-wrap">
 	        <div class="departText"><span class="xi_xi">星级</span> 
 	        
-	        <select  name="periodType"  class="name adult-put">
-	        							<option value="0">请选择</option>
-										<option value="1">★</option>
-										<option value="2">★★</option>
-										<option value="2">★★★</option>
-										<option value="2">★★★★</option>
-										<option value="2">★★★★★</option>
-									</select>
+	        <select id="star"  name="periodType"  class="name adult-put">
+   				<option value="0" selected="selected">请选择</option>
+				<option value="1">★</option>
+				<option value="2">★★</option>
+				<option value="3">★★★</option>
+				<option value="4">★★★★</option>
+				<option value="5">★★★★★</option>
+			</select>
 	        
 	        </div>
 	    </div>
@@ -205,11 +214,13 @@
 		var userTel = $("#userTel").val();
 		var date1 = $('#date1').val();
   		var date2 = $('#date2').val();
+  		var price = $("#price").val();
+  		var star = $("#star").val();
 		
 		var json = {"jsonArray":JSON.stringify(jsonArray), "peopleNum":jsonArray.length, "userName":userName, 
-				"userTel":userTel, "address":address, "date1":date1, "date2":date2};
+				"userTel":userTel, "address":address, "date1":date1, "date2":date2, "star":star, "price":price};
 		
-// 		alert(JSON.stringify(json));
+		alert(JSON.stringify(json));
 		
 		send(json, obj);
   	}

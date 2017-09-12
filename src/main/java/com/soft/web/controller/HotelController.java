@@ -56,7 +56,8 @@ public class HotelController {
 	@RequestMapping("add")
 	@ResponseBody
 	public String addHotel(String userName, String userTel, String peopleNum,
-			String address, String date1, String date2, String jsonArray, HttpServletRequest request) {
+			String address, String date1, String date2, String jsonArray,
+			String star, String price, HttpServletRequest request) {
 		// 获取登陆者的用户名+手机号码
 //		String userName = "";
 //		String userTel = "";
@@ -79,6 +80,8 @@ public class HotelController {
 		insertModel.setUserTel(userTel);
 		insertModel.setDate1(date1);
 		insertModel.setDate2(date2);
+		insertModel.setStar(star);
+		insertModel.setPrice(price);
 		insertModel.setuId(CookieUtil.getCookie(request));
 		hotelService.addHotel(insertModel);
 		int id = insertModel.getId();
@@ -96,13 +99,13 @@ public class HotelController {
 		return "{\"id\":" + id + "}";
 	}
 	
-	@RequestMapping("list")
+	@RequestMapping("lists")
 	public String list(Model model, HttpServletRequest request) {
 		String id = CookieUtil.getCookie(request);
 		if("".equals(id)) {
 			return "login";
 		}
-		List<Map> list = hotelService.queryHotelList(id);
+		List<Map> list = hotelService.queryHotelLists(id);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("config", configService.queryConfig());

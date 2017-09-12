@@ -5,8 +5,12 @@
 <mapper namespace="com.soft.web.dao.hotel.HotelMapper">
 	<!-- 添加酒店订单  -->
 	<insert id="addHotel" parameterType="com.soft.web.dao.model.InsertModel" useGeneratedKeys="true" keyProperty="id">
-		insert into tb_hotel_order(userName, userTel, u_id,  address, checkStartTime, checkEndTime, peopleNum, createTime, updateTime, state)
-		values(#{userName}, #{userTel},#{uId, jdbcType=INTEGER}, #{address}, #{date1}, #{date2}, #{peopleNum}, #{createTime}, #{updateTime}, 0)
+		insert into tb_hotel_order(userName, userTel, u_id,  address, 
+		checkStartTime, checkEndTime, peopleNum, createTime, updateTime,
+		 state, star, price)
+		values(#{userName}, #{userTel},#{uId, jdbcType=INTEGER}, #{address},
+		 #{date1}, #{date2}, #{peopleNum}, #{createTime}, #{updateTime},
+		  0, #{star}, #{price})
 	</insert>
 	
 	<!-- 添加酒店订单詳情  -->
@@ -16,7 +20,7 @@
 	</insert>
 	
 	<!-- 根据用戶ID查询酒店订单详情列表 -->
-	<select id="queryHotelList" resultType="java.util.Map">
+	<select id="queryHotelLists" resultType="java.util.Map">
 		select
 			* 
 		from tb_hotel_order 

@@ -53,7 +53,7 @@ public class HotelService {
 	 * @param state
 	 * @return
 	 */
-	public List<Map> queryHotelList(String id) {
-		return mapper.queryHotelList(id);
+	public List<Map> queryHotelLists(String id) {
+		return mapper.queryHotelLists(id);
 	}
 }

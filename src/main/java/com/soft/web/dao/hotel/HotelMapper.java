@@ -26,6 +26,6 @@ public interface HotelMapper {
 			@Param("updateTime") String updateTime);
 	
 	// 根据用戶ID查询直通车订单详情列表
-	List<Map> queryHotelList(@Param("u_id") String id);
+	List<Map> queryHotelLists(@Param("u_id") String id);
 
 }
