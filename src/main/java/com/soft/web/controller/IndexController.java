@@ -1,6 +1,5 @@
 package com.soft.web.controller;
 
-import java.io.*;
 import java.util.*;
 
 import javax.servlet.http.*;
@@ -23,8 +22,6 @@ import com.soft.web.service.*;
  */
 @Controller
 public class IndexController {
-	
-	private final String banner = "/upload/file";
 	
 	/**
 	 * 登录Service
@@ -55,7 +52,9 @@ public class IndexController {
 		model.addAttribute("banners", banners);
 
 		// 产品列表
-		List products = productService.queryProduct(null, new Page(), null, "1");
+		Page page = new Page();
+		page.setSize(3);
+		List products = productService.queryProduct(null, page, null, "1");
 		model.addAttribute("products", products);
 		return "home"; //已登录
 	}
